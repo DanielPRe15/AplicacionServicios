@@ -35,7 +35,7 @@ class ServicioMecanicoActivity : AppCompatActivity() {
 
     fun siguiente()
     {
-
+     // metodo para pasar de interfaz
     }
 
 }
