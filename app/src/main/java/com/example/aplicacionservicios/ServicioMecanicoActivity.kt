@@ -1,12 +1,14 @@
 package com.example.aplicacionservicios
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 
-class ServicioMecanicoActivity : AppCompatActivity() {
+class ServicioMecanicoActivity : AppCompatActivity(){
 
     private lateinit var txtCliente : TextInputEditText
     private lateinit var txtTelefono : TextInputEditText
@@ -31,6 +33,7 @@ class ServicioMecanicoActivity : AppCompatActivity() {
         atvServicio = findViewById(R.id.atvServicio)
         btnSiguiente = findViewById(R.id.btnSiguiente)
         btnSiguiente.setOnClickListener{siguiente()}
+
     }
 
     fun siguiente()

@@ -1,7 +1,9 @@
 package com.example.aplicacionservicios
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionservicios.adaptador.ServicioAdapter
@@ -10,10 +12,12 @@ import com.example.aplicacionservicios.controlador.ArregloServicio
 class MenuPrincipalActivity : AppCompatActivity() {
 
     private lateinit var rvServicio: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.menu_principal)
         rvServicio=findViewById(R.id.rvServicio)
+
 
 
 
@@ -27,4 +31,6 @@ class MenuPrincipalActivity : AppCompatActivity() {
         //mostrar el valor del objeto adaptador al atributo rvDocentes
         rvServicio.adapter=adaptador
     }
+
+
 }
