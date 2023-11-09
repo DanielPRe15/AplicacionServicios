@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "472301760183",
+    "project_id": "aplicacionservicios-633fc",
+    "storage_bucket": "aplicacionservicios-633fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472301760183:android:d1a1a38f84deeb5d59e732",
+        "android_client_info": {
+          "package_name": "com.example.aplicacionservicios"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAy6H90XFXZUATn3A9WYm-QkyrBr_oJ7WU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

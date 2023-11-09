@@ -1,33 +1,79 @@
 package com.example.aplicacionservicios
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.aplicacionservicios.adaptador.ServicioAdapter
-import com.example.aplicacionservicios.base.InitBD
-import com.example.aplicacionservicios.controlador.ArregloServicio
+import android.text.TextUtils
+import android.view.View
+import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.Toast
+import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var rvServicio:RecyclerView
+
+    private lateinit var txtUsuario : TextInputEditText
+    private lateinit var txtContrasena : TextInputEditText
+    private lateinit var progressBar: ProgressBar
+    private lateinit var auth : FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.menu_principal)
-        rvServicio=findViewById(R.id.rvServicio)
+        setContentView(R.layout.activity_main)
 
+        txtUsuario = findViewById(R.id.txtUsuario)
+        txtContrasena = findViewById(R.id.txtContrasena)
 
+        progressBar = findViewById(R.id.progressBar2)
+        auth = FirebaseAuth.getInstance()
 
-
-    var datos = ArregloServicio().listado()
-
-    //crear objeto de la clase DocenteAdapter
-    var adaptador = ServicioAdapter(datos)
-    //estilo tipo fila para visualizar datos en rvDocentes
-    rvServicio.layoutManager=LinearLayoutManager(this)
-    //rvServicio.layoutManager=GridLayoutManager(this,2)
-    //mostrar el valor del objeto adaptador al atributo rvDocentes
-    rvServicio.adapter=adaptador
     }
+
+    fun Password(view : View)
+    {
+
+    }
+
+    fun register(view : View)
+    {
+        startActivity(Intent(this,RegistrarseActivity::class.java))
+    }
+
+    fun Login(view : View)
+    {
+        loginUser()
+    }
+
+    private fun loginUser()
+    {
+        val usuario : String = txtUsuario.text.toString()
+        val contrasena : String = txtContrasena.text.toString()
+
+        if(!TextUtils.isEmpty(usuario) && !TextUtils.isEmpty(contrasena)){
+            progressBar.visibility = View.VISIBLE
+
+            auth.signInWithEmailAndPassword(usuario, contrasena)
+                .addOnCompleteListener(this ){
+                    task ->
+                    if(task.isSuccessful){
+                        ingresar()
+                    }
+                    else{
+                        Toast.makeText(this,"Error al Iniciar sesión", Toast.LENGTH_LONG).show()
+                    }
+                }
+        }
+
+    }
+
+    private fun ingresar(){
+        startActivity(Intent(this,MenuPrincipalActivity ::class.java))
+    }
+
+
+
+
+
 }

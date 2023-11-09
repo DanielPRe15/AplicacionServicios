@@ -17,6 +17,7 @@ class appConfig: Application() {
         super.onCreate()
         BDNAME="basededatos"
         CONTEXT=applicationContext
+
     }
 
 

@@ -2,33 +2,53 @@ package com.example.aplicacionservicios.base
 
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-<<<<<<< HEAD
-import com.example.aplicacionservicios.data.appConfig
-
-class InitBD:SQLiteOpenHelper(appConfig.CONTEXT,
-    appConfig.BDNAME, null, appConfig.VERSION) {
-    override fun onCreate(bd: SQLiteDatabase) {
-        //Crear tabla:
-        bd.execSQL("create table tb_Trabajador" +
-                "(" +
-                "codi integer primary key autoincrement," +
-                "nomb varchar(50)," +
-                "apell varchar(50)," +
-                "celu varchar(12)," +
-                "foto varchar(3)," +
-                //Tipo de trabajador (electricista, fontanero, etc)
-                "codTipo int)")
-
-        //Ingresar registros a la tabla:
-        bd.execSQL("insert into tb_Trabajador values(null, 'Juan', 'Vasques', '999111555','fot','1')")
-=======
 import com.example.aplicacionservicios.utils.appConfig
+
+
+
 
 class InitBD:SQLiteOpenHelper(appConfig.CONTEXT,
     appConfig.BDNAME,
     null,
     appConfig.VERSION) {
     override fun onCreate(bd: SQLiteDatabase) {
+
+        bd.execSQL("create table tb_servicio_tecnico" +
+                "(" +
+                "cod_tec integer primary key autoincrement," +
+                "nom_tipo varchar(30)," +
+                "pre_tec double )")
+
+        bd.execSQL("create table tb_servicio_plomeria" +
+                "(" +
+                "cod_tec integer primary key autoincrement," +
+                "nom_tipo varchar(30)," +
+                "pre_tec double )")
+
+        bd.execSQL("create table tb_servicio_electricista" +
+                "(" +
+                "cod_tec integer primary key autoincrement," +
+                "nom_tipo varchar(30)," +
+                "pre_tec double )")
+
+        bd.execSQL("create table tb_servicio_limpieza" +
+                "(" +
+                "cod_tec integer primary key autoincrement," +
+                "nom_tipo varchar(30)," +
+                "pre_tec double )")
+
+        bd.execSQL("create table tb_servicio_mecanico" +
+                "(" +
+                "cod_tec integer primary key autoincrement," +
+                "nom_tipo varchar(30)," +
+                "pre_tec double )")
+
+        bd.execSQL("create table tb_servicio_enfermeria" +
+                "(" +
+                "cod_tec integer primary key autoincrement," +
+                "nom_tipo varchar(30)," +
+                "pre_tec double )")
+
 
         //crear tabla
         bd.execSQL(
@@ -39,6 +59,21 @@ class InitBD:SQLiteOpenHelper(appConfig.CONTEXT,
                     "foto varchar(3))"
 
         )
+
+        bd.execSQL(
+            "create table tb_Trabajador" +
+                    "(" +
+                    "codi integer primary key autoincrement," +
+                    "nomb varchar(50)," +
+                    "apell varchar(50)," +
+                    "celu varchar(12)," +
+                    "foto varchar(3)," +
+                    //Tipo de trabajador (electricista, fontanero, etc)
+                    "codTipo int)"
+        )
+
+        //Ingresar registros a la tabla:
+        bd.execSQL("insert into tb_Trabajador values(null, 'Juan', 'Vasques', '999111555','fot','1')")
         //ingresar 6 servicios
         bd.execSQL("insert into tb_servicio values('Servicio Tecnico','s1')")
         bd.execSQL("insert into tb_servicio values('Plomeria','s2')")
@@ -48,14 +83,10 @@ class InitBD:SQLiteOpenHelper(appConfig.CONTEXT,
         bd.execSQL("insert into tb_servicio values('Enfermeria','s6')")
 
 
->>>>>>> 8f54515 (Menu Principal Listado)
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
         TODO("Not yet implemented")
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 8f54515 (Menu Principal Listado)
 }
