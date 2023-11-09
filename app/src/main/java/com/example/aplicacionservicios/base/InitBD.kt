@@ -13,6 +13,43 @@ class InitBD:SQLiteOpenHelper(appConfig.CONTEXT,
     appConfig.VERSION) {
     override fun onCreate(bd: SQLiteDatabase) {
 
+        bd.execSQL("create table tb_servicio_tecnico" +
+                "(" +
+                "cod_tec integer primary key autoincrement," +
+                "nom_tipo varchar(30)," +
+                "pre_tec double )")
+
+        bd.execSQL("create table tb_servicio_plomeria" +
+                "(" +
+                "cod_tec integer primary key autoincrement," +
+                "nom_tipo varchar(30)," +
+                "pre_tec double )")
+
+        bd.execSQL("create table tb_servicio_electricista" +
+                "(" +
+                "cod_tec integer primary key autoincrement," +
+                "nom_tipo varchar(30)," +
+                "pre_tec double )")
+
+        bd.execSQL("create table tb_servicio_limpieza" +
+                "(" +
+                "cod_tec integer primary key autoincrement," +
+                "nom_tipo varchar(30)," +
+                "pre_tec double )")
+
+        bd.execSQL("create table tb_servicio_mecanico" +
+                "(" +
+                "cod_tec integer primary key autoincrement," +
+                "nom_tipo varchar(30)," +
+                "pre_tec double )")
+
+        bd.execSQL("create table tb_servicio_enfermeria" +
+                "(" +
+                "cod_tec integer primary key autoincrement," +
+                "nom_tipo varchar(30)," +
+                "pre_tec double )")
+
+
         //crear tabla
         bd.execSQL(
             "create table tb_servicio" +
