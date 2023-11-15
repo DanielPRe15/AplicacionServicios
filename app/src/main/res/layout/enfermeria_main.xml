@@ -26,7 +26,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="30dp"
                     android:fontFamily="sans-serif-smallcaps"
-                    android:text="PLOMERIA"
+                    android:text="ENFERMERIA"
                     android:textColor="#FFFFFF"
                     android:textSize="34sp" />
             </androidx.cardview.widget.CardView>
@@ -34,7 +34,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="540dp">
+            android:layout_height="545dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,7 +61,7 @@
                     android:hint="[Selecciona Servicio]">
 
                     <AutoCompleteTextView
-                        android:id="@+id/atvPlomServicio"
+                        android:id="@+id/atvEnferServicio"
                         android:layout_width="339dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
@@ -88,7 +88,7 @@
                     android:hint="Ingrese nombre">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtPlomCliente"
+                        android:id="@+id/txtEnferCliente"
                         android:layout_width="339dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
@@ -114,7 +114,7 @@
                     android:hint="Ingrese Teléfono">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtPlomTelefono"
+                        android:id="@+id/txtEnferTelefono"
                         android:layout_width="339dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
@@ -140,7 +140,7 @@
                     android:hint="Ingrese Fecha">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtPlomFecha"
+                        android:id="@+id/txtEnferFecha"
                         android:layout_width="339dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
@@ -166,7 +166,7 @@
                     android:hint="Ingrese Dirección">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtPlomDireccion"
+                        android:id="@+id/txtEnferDireccion"
                         android:layout_width="339dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
@@ -192,7 +192,7 @@
                     android:hint="">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtPlomInformacion"
+                        android:id="@+id/txtEnferInformacion"
                         android:layout_width="339dp"
                         android:layout_height="70dp"
                         android:layout_marginLeft="15dp"
@@ -202,14 +202,13 @@
 
 
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btnPlomCancelar"
+                        android:id="@+id/btnEnferCancelar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -224,7 +223,7 @@
                         app:iconTint="#FFFFFF" />
 
                     <Button
-                        android:id="@+id/btnPlomSiguiente"
+                        android:id="@+id/btnEnferSiguiente"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"

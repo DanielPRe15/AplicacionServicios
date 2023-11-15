@@ -81,6 +81,7 @@ class InitBD:SQLiteOpenHelper(appConfig.CONTEXT,
         bd.execSQL("insert into tb_servicio values('Limpieza del hogar','s4')")
         bd.execSQL("insert into tb_servicio values('Mecanico','s5')")
         bd.execSQL("insert into tb_servicio values('Enfermeria','s6')")
+        bd.execSQL("insert into tb_servicio values('Enfermeria','s6')")
 
 
     }
