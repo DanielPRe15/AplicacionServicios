@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionservicios.R
@@ -18,6 +17,7 @@ import com.example.aplicacionservicios.entidad.Servicio
 import com.example.aplicacionservicios.utils.appConfig
 
 class ServicioAdapter(var data:ArrayList<Servicio>): RecyclerView.Adapter<ViewServicio>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewServicio {
         //inflar
@@ -108,6 +108,7 @@ class ServicioAdapter(var data:ArrayList<Servicio>): RecyclerView.Adapter<ViewSe
     }
 
 }
+
 
 private fun Intent.putExtra(s: String, get: Servicio) {
 

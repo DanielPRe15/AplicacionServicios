@@ -20,8 +20,10 @@ class ArregloServicio {
         while (rs.moveToNext()) {
             //crear objeto de la clase Docente
             var bean = Servicio(
-                rs.getString(0),
-                rs.getString(1))
+                rs.getInt(0),
+                rs.getString(1),
+                rs.getInt(2),
+                rs.getString(3))
             //enviar objeto al arreglo data
             data.add(bean)
         }

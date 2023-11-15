@@ -20,7 +20,6 @@ class MenuPrincipalActivity : AppCompatActivity() {
 
 
 
-
         var datos = ArregloServicio().listado()
 
         //crear objeto de la clase DocenteAdapter
@@ -32,6 +31,10 @@ class MenuPrincipalActivity : AppCompatActivity() {
         rvServicio.adapter=adaptador
     }
 
-
+    private fun abrirServicioTecnico(codigoServicio: Int) {
+        val intent = Intent(this, ServicioTecnicoActivity::class.java)
+        intent.putExtra("CODIGO_SERVICIO", codigoServicio)
+        startActivity(intent)
+    }
 
 }
