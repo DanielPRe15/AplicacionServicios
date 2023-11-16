@@ -1,6 +1,7 @@
 package com.example.aplicacionservicios.controlador
 
 import android.content.ContentValues
+import android.database.sqlite.SQLiteDatabase
 import com.example.aplicacionservicios.entidad.ServicioTecnico
 import com.example.aplicacionservicios.utils.appConfig
 import java.text.SimpleDateFormat
@@ -35,4 +36,5 @@ class ArregloServicioTecnico {
 
 
 }
+
 

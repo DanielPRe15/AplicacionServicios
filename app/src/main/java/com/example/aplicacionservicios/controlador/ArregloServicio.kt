@@ -30,10 +30,27 @@ class ArregloServicio {
         return data
     }
 
+    fun obtenerCodigoServicio(nombreServicio: String): Int {
+        var codigoServicio = -1 // Valor por defecto si no se encuentra el servicio
+
+        val cn: SQLiteDatabase = appConfig.BD.readableDatabase
+        val SQL = "SELECT cod_servicio FROM tb_servicio WHERE nom = ?"
+        val selectionArgs = arrayOf(nombreServicio)
+        val cursor: Cursor = cn.rawQuery(SQL, selectionArgs)
+
+        if (cursor.moveToFirst()) {
+            codigoServicio = cursor.getInt(cursor.getColumnIndex("cod_servicio"))
+        }
+
+        cursor.close()
+        return codigoServicio
+    }
+}
+
+
    /* fun listado():ArrayList<Servicio>{
         var data=ArrayList<Servicio>()
             data.add(Servicio('Servicio Tecnico','s1'))
             data.add(Servicio('Plomeria','s2'))
             return  data
     }*/
-}

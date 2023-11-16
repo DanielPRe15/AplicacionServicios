@@ -1,28 +1,33 @@
 package com.example.aplicacionservicios.controlador
 
 import android.database.sqlite.SQLiteDatabase
+import com.example.aplicacionservicios.entidad.Servicio
+import com.example.aplicacionservicios.entidad.ServicioTecnicoTipo
 import com.example.aplicacionservicios.utils.appConfig
 
 class ArregloServicioTecnicoTipo {
-    fun listadoTipos():ArrayList<String>{
-        var data=ArrayList<String>()
+    fun listadoTipos(): ArrayList<String> {
+        var data = ArrayList<String>()
         var cn: SQLiteDatabase = appConfig.BD.readableDatabase
-        var SQL="select *from tb_tiposerviciotec"
-        var rs=cn.rawQuery(SQL,null)
-        while(rs.moveToNext()) {
+        var SQL = "select *from tb_tiposerviciotec"
+        var rs = cn.rawQuery(SQL, null)
+        while (rs.moveToNext()) {
             var bean = rs.getString(1)
+
             data.add(bean)
         }
         return data
     }
-    fun buscarNombreTipo(cod_tiposervicotec:Int):String{
-        var data=""
-        var cn: SQLiteDatabase = appConfig.BD.readableDatabase
-        var SQL="select nombre from tb_tiposerviciotec where cod_tiposervicotec=?"
-        var rs=cn.rawQuery(SQL, arrayOf(cod_tiposervicotec.toString()))
-        if(rs.moveToNext()) {
-            data= rs.getString(0)
+
+    fun obtenerPrecioPorCodigo(codigo: Int): Double {
+        var precio = 0.0
+        val cn: SQLiteDatabase = appConfig.BD.readableDatabase
+        val SQL = "SELECT precio FROM tb_tiposerviciotec WHERE cod_tiposervicotec = $codigo"
+        val rs = cn.rawQuery(SQL, null)
+        if (rs.moveToFirst()) {
+            precio = rs.getDouble(0)
         }
-        return data
+        rs.close()
+        return precio
     }
 }

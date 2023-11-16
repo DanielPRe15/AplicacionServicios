@@ -10,6 +10,7 @@
         android:layout_height="729dp"
         android:orientation="vertical"
         android:padding="40dp"
+        android:background="@drawable/fondoayudafast"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
@@ -20,6 +21,14 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:indeterminate="true"/>
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="330dp"
+            android:layout_height="280dp"
+            app:srcCompat="@drawable/logo3"
+            tools:layout_editor_absoluteX="0dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField3"

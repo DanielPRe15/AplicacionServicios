@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aplicacionservicios.controlador.ArregloServicio
 import com.example.aplicacionservicios.controlador.ArregloServicioTecnico
@@ -31,7 +32,7 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
     private lateinit var btnTecnSiguiente: Button
     private lateinit var btnTecnCancelar: Button
 
-
+    var posTipos=-1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,30 +50,23 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
         btnTecnCancelar.setOnClickListener { cancelar() }
 
 
-        //cargar sexo
+        atvTecnServicio.setOnItemClickListener(this)
 
-        //adaptador
-        val adaptador = ArrayAdapter<String>(
-            this,
-            android.R.layout.simple_list_item_1
-        )
-        //mostrar adaptador
-        atvTecnServicio.setAdapter(adaptador)
-        //
-    cargarTipos()
+
+        cargarTipos()
 
     }
 
+
+
     fun siguiente() {
-        val cliente = txtTecnCliente.text.toString()
-        val telefono = txtTecnTelefono.text.toString()
-        val fecha = txtTecnFecha.text.toString() // Obtener la fecha como String directamente
-        val direccion = txtTecnDireccion.text.toString()
-        val informacion = txtTecnInformacion.text.toString()
+        var cliente = txtTecnCliente.text.toString()
+        var telefono = txtTecnTelefono.text.toString()
+        var fecha = txtTecnFecha.text.toString()
+        var direccion = txtTecnDireccion.text.toString()
+        var informacion = txtTecnInformacion.text.toString()
 
-
-        // Intentar convertir la fecha a un objeto Date
-        val dateFormat = SimpleDateFormat("dd/MM/yyyy") // Formato esperado de la fecha
+        var dateFormat = SimpleDateFormat("dd/MM/yyyy")
         var date: Date? = null
         try {
             date = dateFormat.parse(fecha)
@@ -82,36 +76,87 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
         }
 
         if (date != null) {
-            val servicioTecnico = ServicioTecnico(
-                codigoServicioTec = 0, // Código del servicio técnico
-                codigoServi = 0, // Código del servicio
-                codigoTipo = 0, // Código del tipo de servicio
-                nombreCliente = cliente,
-                telefonoCliente = telefono,
-                fecha = date, // Utilizar el objeto Date convertido
-                direccionCliente = direccion,
-                informacionAdicional = informacion
-            )
+            val nombreServicio = "Servicio Tecnico" // Reemplazar con el nombre real del servicio que estás registrando
+            val codigoServicio = ArregloServicio().obtenerCodigoServicio(nombreServicio)
 
-            val arregloServicioTecnico = ArregloServicioTecnico()
-            val resultado = arregloServicioTecnico.adicionar(servicioTecnico)
+            if (codigoServicio != -1) {
+                var servicioTecnico = ServicioTecnico(
+                    codigoServicioTec = 0,
+                    codigoServi = codigoServicio,
+                    codigoTipo = posTipos,
+                    nombreCliente = cliente,
+                    telefonoCliente = telefono,
+                    fecha = date,
+                    direccionCliente = direccion,
+                    informacionAdicional = informacion
+                )
 
-            if (resultado > 0) {
-                Toast.makeText(this, "Servicio técnico guardado exitosamente", Toast.LENGTH_SHORT).show()
-                // Realizar acciones adicionales si la grabación fue exitosa
+                mostrarReporte(servicioTecnico)
             } else {
-                Toast.makeText(this, "Error al guardar el servicio técnico", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "No se encontró el código para el servicio: $nombreServicio", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
+    fun mostrarReporte(servicioTecnico: ServicioTecnico) {
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy")
+        val fechaFormateada = dateFormat.format(servicioTecnico.fecha)
+
+        val precioTipoServicio = if (posTipos != -1) {
+            val precio = ArregloServicioTecnicoTipo().obtenerPrecioPorCodigo(posTipos)
+            "Precio: $precio" // Mostrar el precio del tipo de servicio en el reporte
+        } else {
+            "Precio: No disponible"
+        }
+
+        val reporte = "Cliente: ${servicioTecnico.nombreCliente}\n" +
+                "Teléfono: ${servicioTecnico.telefonoCliente}\n" +
+                "Fecha: $fechaFormateada\n" +
+                "Dirección: ${servicioTecnico.direccionCliente}\n" +
+                "Información Adicional: ${servicioTecnico.informacionAdicional}\n" +
+                "$precioTipoServicio"
 
 
+        val builder = AlertDialog.Builder(this, R.style.CustomAlertDialogStyle)
+        builder.setTitle("Reporte del Servicio Técnico")
+        builder.setMessage(reporte)
+
+        builder.setPositiveButton("Confirmar Pedido") { dialog, which ->
+            // Aquí iría la lógica para confirmar el pedido
+            confirmarPedido(servicioTecnico)
+        }
+
+        builder.setNegativeButton("Cancelar") { dialog, which ->
+            // Aquí podrías realizar alguna acción si se cancela el reporte
+            Toast.makeText(this, "Reporte cancelado", Toast.LENGTH_SHORT).show()
+        }
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+
+    fun confirmarPedido(servicioTecnico: ServicioTecnico) {
+        val arregloServicioTecnico = ArregloServicioTecnico()
+
+        // Simular la adición del servicio técnico a la lista
+        val resultado = arregloServicioTecnico.adicionar(servicioTecnico)
+
+        if (resultado > 0) {
+            // Acciones posteriores a la confirmación exitosa del pedido
+            Toast.makeText(this, "Pedido confirmado exitosamente", Toast.LENGTH_SHORT).show()
+
+            // Aquí podrías redirigir a otra actividad, limpiar los campos, etc.
+        } else {
+            // Si falla la confirmación del pedido
+            Toast.makeText(this, "Error al confirmar el pedido", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     fun cancelar() {
-            var intent = Intent(this, MenuPrincipalActivity::class.java)
-            startActivity(intent)
-        }
+        var intent = Intent(this, MenuPrincipalActivity::class.java)
+        startActivity(intent)
+    }
 
     fun cargarTipos(){
         //invocar al método listadoDistritos
@@ -121,7 +166,9 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
         //enviar el objeto "adaptador" al atributo atvDistrito
         atvTecnServicio.setAdapter(adaptador)
     }
-        override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
 
-        }
+    override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        posTipos=p2+1
     }
+
+}
