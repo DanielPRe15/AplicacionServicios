@@ -4,17 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import android.widget.AdapterView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.tasks.Task
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import java.lang.ref.PhantomReference
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+
 
 class RegistrarseActivity  : AppCompatActivity(){
 
@@ -33,6 +33,14 @@ class RegistrarseActivity  : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrarse)
+
+        val db = Firebase.firestore
+
+        val user = hashMapOf(
+            "first" to "Ada",
+            "last" to "Lovelace",
+            "born" to 1815,
+        )
 
         txtNombreRE = findViewById(R.id.txtNombreRE)
         txtApellidoRE = findViewById(R.id.txtApellidoRE)
@@ -56,29 +64,38 @@ class RegistrarseActivity  : AppCompatActivity(){
         createNewAccount()
     }
 
-    private fun createNewAccount()
-    {
-        val nombre : String = txtNombreRE.text.toString()
-        val apellido : String = txtApellidoRE.text.toString()
-        val correo : String = txtCorreoRE.text.toString()
-        val contrasena : String = txtContrasena.text.toString()
+    private fun createNewAccount() {
+        val nombre: String = txtNombreRE.text.toString()
+        val apellido: String = txtApellidoRE.text.toString()
+        val correo: String = txtCorreoRE.text.toString()
+        val contrasena: String = txtContrasena.text.toString()
+        val db = Firebase.firestore
+        val collectionName = "usuarios"
 
-        if(!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(apellido) && !TextUtils.isEmpty(correo) && !TextUtils.isEmpty(contrasena))
-        {
+
+        if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(apellido) && !TextUtils.isEmpty(correo) && !TextUtils.isEmpty(
+                contrasena
+            )
+        ) {
             progressBar.visibility = View.VISIBLE
 
-            auth.createUserWithEmailAndPassword(correo,contrasena)
-                .addOnCompleteListener(this){
-                    task ->
-                    if(task.isComplete){
-                        val user : FirebaseUser? = auth.currentUser
+            auth.createUserWithEmailAndPassword(correo, contrasena)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isComplete) {
+                        val user: FirebaseUser? = auth.currentUser
                         verificarEmail(user)
 
-                        val userBD = dbReference.child(user?.uid.toString())
-                        userBD.child("Name").setValue(nombre)
-                        userBD.child("LastName").setValue(apellido)
+                        val userDocument = db.collection(collectionName).document()
+                        userDocument.set(
+                            mapOf(
+                                "nombre" to nombre,
+                                "apellido" to apellido
+                            )
+                        )
                         registrado()
+
                     }
+
                 }
         }
     }
