@@ -109,6 +109,9 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
             "Precio: No disponible"
         }
 
+
+
+
         val reporte = "Cliente: ${servicioTecnico.nombreCliente}\n" +
                 "Teléfono: ${servicioTecnico.telefonoCliente}\n" +
                 "Fecha: $fechaFormateada\n" +
@@ -124,6 +127,10 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
         builder.setPositiveButton("Confirmar Pedido") { dialog, which ->
             // Aquí iría la lógica para confirmar el pedido
             confirmarPedido(servicioTecnico)
+
+            val intent = Intent(this, ConfirmacionActivity::class.java)
+            intent.putExtra("precio_servicio", precioTipoServicio)
+            startActivity(intent)
         }
 
         builder.setNegativeButton("Cancelar") { dialog, which ->
@@ -131,8 +138,12 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
             Toast.makeText(this, "Reporte cancelado", Toast.LENGTH_SHORT).show()
         }
 
+
         val dialog = builder.create()
         dialog.show()
+
+
+
     }
 
 
@@ -154,6 +165,7 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
             // Si falla la confirmación del pedido
             Toast.makeText(this, "Error al confirmar el pedido", Toast.LENGTH_SHORT).show()
         }
+
     }
 
 
