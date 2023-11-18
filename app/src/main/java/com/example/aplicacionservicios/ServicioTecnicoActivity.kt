@@ -146,12 +146,18 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
             // Acciones posteriores a la confirmación exitosa del pedido
             Toast.makeText(this, "Pedido confirmado exitosamente", Toast.LENGTH_SHORT).show()
 
+            val intent = Intent(this, ConfirmacionActivity::class.java)
+            startActivity(intent)
+
             // Aquí podrías redirigir a otra actividad, limpiar los campos, etc.
         } else {
             // Si falla la confirmación del pedido
             Toast.makeText(this, "Error al confirmar el pedido", Toast.LENGTH_SHORT).show()
         }
     }
+
+
+
 
     fun cancelar() {
         var intent = Intent(this, MenuPrincipalActivity::class.java)
