@@ -2,12 +2,14 @@ package com.example.aplicacionservicios
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionservicios.adaptador.ServicioAdapter
 import com.example.aplicacionservicios.controlador.ArregloServicio
+import com.google.firebase.auth.FirebaseAuth
 
 class MenuPrincipalActivity : AppCompatActivity() {
 
@@ -35,6 +37,11 @@ class MenuPrincipalActivity : AppCompatActivity() {
         val intent = Intent(this, ServicioTecnicoActivity::class.java)
         intent.putExtra("CODIGO_SERVICIO", codigoServicio)
         startActivity(intent)
+    }
+
+    fun cerrarSesion(view: View) {
+        FirebaseAuth.getInstance().signOut()
+        startActivity(Intent(this,MainActivity ::class.java))
     }
 
 }

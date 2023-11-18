@@ -35,12 +35,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:hint="Ingrese nombre">
+            android:hint="Ingrese correo">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtUsuario"
                 android:layout_width="309dp"
                 android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
                 android:layout_marginLeft="15dp"
                 android:textSize="16sp" />
 
@@ -50,6 +51,7 @@
             android:id="@+id/outlinedTextField4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
             android:layout_marginBottom="15dp"
             android:hint="Ingrese Contraseña">
 
@@ -58,7 +60,8 @@
                 android:layout_width="308dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:inputType="textPassword"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

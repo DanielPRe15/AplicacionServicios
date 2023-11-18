@@ -31,7 +31,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.079" />
+        app:layout_constraintVertical_bias="0.072" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -53,5 +53,19 @@
                 android:padding="40dp" />
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/button2"
+        android:onClick="cerrarSesion"
+        android:layout_width="125dp"
+        android:layout_height="34dp"
+        android:backgroundTint="#AC3A31"
+        android:text="Cerrar Sesión"
+        android:textSize="10dp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="13dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
