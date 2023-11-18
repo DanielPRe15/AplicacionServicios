@@ -37,13 +37,7 @@ class RegistrarseActivity  : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrarse)
 
-        val db = Firebase.firestore
 
-        val user = hashMapOf(
-            "first" to "Ada",
-            "last" to "Lovelace",
-            "born" to 1815,
-        )
 
         txtNombreRE = findViewById(R.id.txtNombreRE)
         txtApellidoRE = findViewById(R.id.txtApellidoRE)

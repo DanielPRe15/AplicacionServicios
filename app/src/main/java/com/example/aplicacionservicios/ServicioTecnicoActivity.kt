@@ -79,7 +79,9 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
             val nombreServicio = "Servicio Tecnico" // Reemplazar con el nombre real del servicio que estás registrando
             val codigoServicio = ArregloServicio().obtenerCodigoServicio(nombreServicio)
 
-            if (codigoServicio != -1) {
+            if (codigoServicio != -1 ) {
+
+
                 var servicioTecnico = ServicioTecnico(
                     codigoServicioTec = 0,
                     codigoServi = codigoServicio,
@@ -88,7 +90,8 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
                     telefonoCliente = telefono,
                     fecha = date,
                     direccionCliente = direccion,
-                    informacionAdicional = informacion
+                    informacionAdicional = informacion,
+
                 )
 
                 mostrarReporte(servicioTecnico)
@@ -108,6 +111,7 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
         } else {
             "Precio: No disponible"
         }
+
 
         val reporte = "Cliente: ${servicioTecnico.nombreCliente}\n" +
                 "Teléfono: ${servicioTecnico.telefonoCliente}\n" +
