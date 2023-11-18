@@ -6,4 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".ConfirmacionActivity">
 
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="20dp"
+            android:text="¡SERVICIOS CONFIRMADO!"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            android:textStyle="bold"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.072" />
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/chack2"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/txtFechasRepo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/txtPrecio"
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/btnAceptar"
+            android:layout_width="215dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="90dp"
+
+
+            android:text="Aceptar" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
