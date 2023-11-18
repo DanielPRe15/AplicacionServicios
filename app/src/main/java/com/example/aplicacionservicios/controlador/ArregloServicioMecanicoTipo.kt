@@ -3,11 +3,11 @@ package com.example.aplicacionservicios.controlador
 import android.database.sqlite.SQLiteDatabase
 import com.example.aplicacionservicios.utils.appConfig
 
-class ArregloServicioTecnicoTipo {
+class ArregloServicioMecanicoTipo {
     fun listadoTipos(): ArrayList<String> {
         var data = ArrayList<String>()
         var cn: SQLiteDatabase = appConfig.BD.readableDatabase
-        var SQL = "select *from tb_tiposerviciotec"
+        var SQL = "select *from tb_tiposerviciomeca"
         var rs = cn.rawQuery(SQL, null)
         while (rs.moveToNext()) {
             var bean = rs.getString(1)
@@ -20,7 +20,7 @@ class ArregloServicioTecnicoTipo {
     fun obtenerPrecioPorCodigo(codigo: Int): Double {
         var precio = 0.0
         val cn: SQLiteDatabase = appConfig.BD.readableDatabase
-        val SQL = "SELECT precio FROM tb_tiposerviciotec WHERE cod_tiposervicotec = $codigo"
+        val SQL = "SELECT precio FROM tb_tiposerviciomeca WHERE cod_tiposerviciomeca = $codigo"
         val rs = cn.rawQuery(SQL, null)
         if (rs.moveToFirst()) {
             precio = rs.getDouble(0)

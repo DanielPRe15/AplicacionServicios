@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionservicios.adaptador.ServicioAdapter
@@ -28,7 +29,7 @@ class MenuPrincipalActivity : AppCompatActivity() {
         var adaptador = ServicioAdapter(datos)
         //estilo tipo fila para visualizar datos en rvDocentes
         rvServicio.layoutManager= LinearLayoutManager(this)
-        //rvServicio.layoutManager=GridLayoutManager(this,3)
+        //rvServicio.layoutManager=GridLayoutManager(this,1)
         //mostrar el valor del objeto adaptador al atributo rvDocentes
         rvServicio.adapter=adaptador
     }
