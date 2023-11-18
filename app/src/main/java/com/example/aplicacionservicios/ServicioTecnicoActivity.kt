@@ -1,5 +1,6 @@
 package com.example.aplicacionservicios
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -7,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +19,7 @@ import com.example.aplicacionservicios.entidad.ServicioTecnico
 import com.google.android.material.textfield.TextInputEditText
 import java.text.ParseException
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 
 class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListener {
@@ -53,6 +56,46 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
         atvTecnServicio.setOnItemClickListener(this)
 
 
+        btnTecnSiguiente.setOnClickListener {
+            val phoneNumber = txtTecnTelefono.text.toString()
+            if (!validarTelefono(phoneNumber)) {
+                // Si el teléfono no cumple con las condiciones, mostrar un mensaje de error
+                txtTecnTelefono.error = "Ingrese un número de teléfono válido"
+
+
+            } else {
+                // Si el teléfono es válido, continuar con la lógica deseada
+                // Ejemplo: Ir a otra actividad o realizar alguna operación
+                siguiente()
+
+            }
+
+            btnTecnSiguiente.setOnClickListener {
+                val cliente = txtTecnCliente.text.toString().trim()
+                val telefono = txtTecnTelefono.text.toString().trim()
+                val fecha = txtTecnFecha.text.toString().trim()
+                val direccion = txtTecnDireccion.text.toString().trim()
+                val informacion = txtTecnInformacion.text.toString().trim()
+
+                if (cliente.isEmpty() || telefono.isEmpty() || fecha.isEmpty() || direccion.isEmpty() || informacion.isEmpty()) {
+                    Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+                } else {
+                    val phoneNumber = txtTecnTelefono.text.toString()
+                    if (!validarTelefono(phoneNumber)) {
+                        // Si el teléfono no cumple con las condiciones, mostrar un mensaje de error
+                        txtTecnTelefono.error = "Ingrese un número de teléfono válido"
+                    } else {
+                        // Si todos los campos están completos y el teléfono es válido, continuar con la lógica deseada
+                        siguiente()
+                    }
+                }
+            }
+
+
+    }
+
+
+
         cargarTipos()
 
     }
@@ -79,10 +122,18 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
             val nombreServicio = "Servicio Tecnico" // Reemplazar con el nombre real del servicio que estás registrando
             val codigoServicio = ArregloServicio().obtenerCodigoServicio(nombreServicio)
 
-            if (codigoServicio != -1 ) {
 
 
-                var servicioTecnico = ServicioTecnico(
+
+            if (codigoServicio != -1) {
+                val precioTipoServicio = if (posTipos != -1) {
+                    val precio = ArregloServicioTecnicoTipo().obtenerPrecioPorCodigo(posTipos)
+                    precio.toString()
+                } else {
+                    "No disponible"
+                }
+
+                val servicioTecnico = ServicioTecnico(
                     codigoServicioTec = 0,
                     codigoServi = codigoServicio,
                     codigoTipo = posTipos,
@@ -91,15 +142,17 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
                     fecha = date,
                     direccionCliente = direccion,
                     informacionAdicional = informacion,
-
                 )
 
                 mostrarReporte(servicioTecnico)
+
+
             } else {
                 Toast.makeText(this, "No se encontró el código para el servicio: $nombreServicio", Toast.LENGTH_SHORT).show()
             }
         }
     }
+
 
     fun mostrarReporte(servicioTecnico: ServicioTecnico) {
         val dateFormat = SimpleDateFormat("dd/MM/yyyy")
@@ -127,7 +180,7 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
 
         builder.setPositiveButton("Confirmar Pedido") { dialog, which ->
             // Aquí iría la lógica para confirmar el pedido
-            confirmarPedido(servicioTecnico)
+            confirmarPedido(servicioTecnico, precioTipoServicio)
         }
 
         builder.setNegativeButton("Cancelar") { dialog, which ->
@@ -140,7 +193,7 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
     }
 
 
-    fun confirmarPedido(servicioTecnico: ServicioTecnico) {
+    fun confirmarPedido(servicioTecnico: ServicioTecnico, precioServicio: String) {
         val arregloServicioTecnico = ArregloServicioTecnico()
 
         // Simular la adición del servicio técnico a la lista
@@ -151,7 +204,9 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
             Toast.makeText(this, "Pedido confirmado exitosamente", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, ConfirmacionActivity::class.java)
+            intent.putExtra("precio", precioServicio)
             startActivity(intent)
+
 
             // Aquí podrías redirigir a otra actividad, limpiar los campos, etc.
         } else {
@@ -176,6 +231,38 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
         //enviar el objeto "adaptador" al atributo atvDistrito
         atvTecnServicio.setAdapter(adaptador)
     }
+
+
+
+    fun showDatePickerDialog(view: View) {
+        val editText = view as EditText
+
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            this,
+            { _, yearSelected, monthOfYear, dayOfMonth ->
+                val selectedDate = "$dayOfMonth/${monthOfYear + 1}/$yearSelected"
+                editText.setText(selectedDate)
+            },
+            year,
+            month,
+            day
+        )
+
+        datePickerDialog.show()
+    }
+
+
+private fun validarTelefono(phone: String): Boolean {
+    // Patrón para aceptar solo números y longitud de 9 dígitos
+    val regex = Regex("^[0-9]{9}$")
+    return regex.matches(phone)
+}
+
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         posTipos=p2+1

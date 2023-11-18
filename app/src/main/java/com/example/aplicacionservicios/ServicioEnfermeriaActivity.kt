@@ -1,5 +1,6 @@
 package com.example.aplicacionservicios
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -7,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +20,7 @@ import com.example.aplicacionservicios.entidad.ServicioEnfermeria
 import com.google.android.material.textfield.TextInputEditText
 import java.text.ParseException
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 
 class ServicioEnfermeriaActivity : AppCompatActivity(),AdapterView.OnItemClickListener {
@@ -52,8 +55,48 @@ class ServicioEnfermeriaActivity : AppCompatActivity(),AdapterView.OnItemClickLi
 
         atvEnferServicio.setOnItemClickListener(this)
 
+        btnEnferSiguiente.setOnClickListener {
+            val phoneNumber = txtEnferTelefono.text.toString()
+            if (!validarTelefono(phoneNumber)) {
+                // Si el teléfono no cumple con las condiciones, mostrar un mensaje de error
+                txtEnferTelefono.error = "Ingrese un número de teléfono válido"
+
+
+            } else {
+                // Si el teléfono es válido, continuar con la lógica deseada
+                // Ejemplo: Ir a otra actividad o realizar alguna operación
+                siguiente()
+
+            }
+
+            btnEnferSiguiente.setOnClickListener {
+                val cliente = txtEnferCliente.text.toString().trim()
+                val telefono = txtEnferTelefono.text.toString().trim()
+                val fecha = txtEnferFecha.text.toString().trim()
+                val direccion = txtEnferDireccion.text.toString().trim()
+                val informacion = txtEnferInformacion.text.toString().trim()
+
+                if (cliente.isEmpty() || telefono.isEmpty() || fecha.isEmpty() || direccion.isEmpty() || informacion.isEmpty()) {
+                    Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+                } else {
+                    val phoneNumber = txtEnferTelefono.text.toString()
+                    if (!validarTelefono(phoneNumber)) {
+                        // Si el teléfono no cumple con las condiciones, mostrar un mensaje de error
+                        txtEnferTelefono.error = "Ingrese un número de teléfono válido"
+                    } else {
+                        // Si todos los campos están completos y el teléfono es válido, continuar con la lógica deseada
+                        siguiente()
+                    }
+                }
+            }
+
+
+        }
+
+
 
         cargarTipos()
+
     }
 
     fun siguiente() {
@@ -77,6 +120,12 @@ class ServicioEnfermeriaActivity : AppCompatActivity(),AdapterView.OnItemClickLi
             val codigoServicio = ArregloServicio().obtenerCodigoServicio(nombreServicio)
 
             if (codigoServicio != -1) {
+                val precioTipoServicio = if (posTipos != -1) {
+                    val precio = ArregloServicioTecnicoTipo().obtenerPrecioPorCodigo(posTipos)
+                    precio.toString()
+                } else {
+                    "No disponible"
+                }
                 var servicioEnfermeria = ServicioEnfermeria(
                     codigoServicioTec = 0,
                     codigoServi = codigoServicio,
@@ -120,7 +169,7 @@ class ServicioEnfermeriaActivity : AppCompatActivity(),AdapterView.OnItemClickLi
 
         builder.setPositiveButton("Confirmar Pedido") { dialog, which ->
             // Aquí iría la lógica para confirmar el pedido
-            confirmarPedido(servicioEnfermeria)
+            confirmarPedido(servicioEnfermeria, precioTipoServicio)
         }
 
         builder.setNegativeButton("Cancelar") { dialog, which ->
@@ -133,7 +182,7 @@ class ServicioEnfermeriaActivity : AppCompatActivity(),AdapterView.OnItemClickLi
     }
 
 
-    fun confirmarPedido(servicioEnfermeria: ServicioEnfermeria) {
+    fun confirmarPedido(servicioEnfermeria: ServicioEnfermeria, precioServicio: String) {
         val arregloServicioEnfermeria = ArregloServicioEnfermeria()
 
         // Simular la adición del servicio técnico a la lista
@@ -142,6 +191,10 @@ class ServicioEnfermeriaActivity : AppCompatActivity(),AdapterView.OnItemClickLi
         if (resultado > 0) {
             // Acciones posteriores a la confirmación exitosa del pedido
             Toast.makeText(this, "Pedido confirmado exitosamente", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(this, ConfirmacionActivity::class.java)
+            intent.putExtra("precio", precioServicio)
+            startActivity(intent)
 
             // Aquí podrías redirigir a otra actividad, limpiar los campos, etc.
         } else {
@@ -165,6 +218,35 @@ class ServicioEnfermeriaActivity : AppCompatActivity(),AdapterView.OnItemClickLi
         var adaptador= ArrayAdapter(this,android.R.layout.simple_list_item_1,data)
         //enviar el objeto "adaptador" al atributo atvDistrito
         atvEnferServicio.setAdapter(adaptador)
+    }
+
+
+    fun showDatePickerDialog(view: View) {
+        val editText = view as EditText
+
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            this,
+            { _, yearSelected, monthOfYear, dayOfMonth ->
+                val selectedDate = "$dayOfMonth/${monthOfYear + 1}/$yearSelected"
+                editText.setText(selectedDate)
+            },
+            year,
+            month,
+            day
+        )
+
+        datePickerDialog.show()
+    }
+
+    private fun validarTelefono(phone: String): Boolean {
+        // Patrón para aceptar solo números y longitud de 9 dígitos
+        val regex = Regex("^[0-9]{9}$")
+        return regex.matches(phone)
     }
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {

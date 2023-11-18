@@ -35,8 +35,8 @@ class ConfirmacionActivity : AppCompatActivity() {
         // Mostrar la fecha en un TextView (o donde desees en tu reporte)
         txtFechasRepo.text = "Fecha actual: $currentDate"
 
-        val precioServicio = intent.getStringExtra("precio_servicio")
-        txtPrecio.text = precioServicio
+        val precioServicio = intent.getStringExtra("precio")
+        txtPrecio.text =  precioServicio
 
     }
     fun aceptar(){

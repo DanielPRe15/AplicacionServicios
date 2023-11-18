@@ -60,6 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
+
                     android:hint="[Selecciona Servicio]">
 
                     <AutoCompleteTextView
@@ -146,7 +147,9 @@
                         android:layout_width="339dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:textSize="16sp" />
+                        android:focusable="false"
+                    android:textSize="16sp"
+                    android:onClick="showDatePickerDialog" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
