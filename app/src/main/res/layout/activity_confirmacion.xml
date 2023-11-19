@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:background="#000000"
             android:padding="20dp"
-            android:text="¡SERVICIOS CONFIRMADO!"
+            android:text="¡SERVICIO CONFIRMADO!"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="34sp"
@@ -46,21 +46,42 @@
             android:id="@+id/txtFechasRepo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center" />
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif-medium"
+            android:textAlignment="center"
+            android:textColor="#838080"
+            android:textSize="30dp" />
+
+
+        <TextView
+            android:id="@+id/txtTipoServicioRepo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textAlignment="center"
+            android:textColor="#838080"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/txtPrecio"
             android:layout_width="match_parent"
             android:layout_height="31dp"
-            android:textAlignment="center" />
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textAlignment="center"
+            android:textColor="#838080"
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/btnAceptar"
-            android:layout_width="215dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="90dp"
+            android:layout_width="188dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="120dp"
 
 
-            android:text="Aceptar" />
+            android:layout_marginTop="40dp"
+            android:text="ACEPTAR"
+            app:cornerRadius="9dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.example.aplicacionservicios.controlador
 import android.database.sqlite.SQLiteDatabase
 import android.database.Cursor
 import android.widget.Toast
+import com.example.aplicacionservicios.base.InitBD
 import com.example.aplicacionservicios.entidad.Servicio
 import com.example.aplicacionservicios.utils.appConfig
 import com.google.firebase.firestore.util.Util
@@ -53,44 +54,8 @@ class ArregloServicio {
         return codigoServicio
     }
 
-    fun obtenerNombreTrabajador(nombreTrabajador: String): String {
-        var nombre = "" // Valor por defecto si no se encuentra el trabajador
-
-        val cn: SQLiteDatabase = appConfig.BD.readableDatabase
-        val SQL = "SELECT nomb FROM tb_trabajador WHERE nomb = ?"
-        val selectionArgs = arrayOf(nombreTrabajador)
-        val cursor: Cursor = cn.rawQuery(SQL, selectionArgs)
-
-        if (cursor.moveToFirst()) {
-            val columnIndex = cursor.getColumnIndex("nomb")
-            if (columnIndex != -1) {
-                nombre = cursor.getString(columnIndex)
-            }
-        }
-
-        cursor.close()
-        return nombre
-    }
 
 
-    fun obtenerCodigoTrabajador(nombreTrabajador: String): Int {
-        var codigoTrabajador = -1 // Valor por defecto si no se encuentra el trabajador
-
-        val cn: SQLiteDatabase = appConfig.BD.readableDatabase
-        val SQL = "SELECT cod_trabajador FROM tb_trabajador WHERE nomb = ?"
-        val selectionArgs = arrayOf(nombreTrabajador)
-        val cursor: Cursor = cn.rawQuery(SQL, selectionArgs)
-
-        if (cursor.moveToFirst()) {
-            val columnIndex = cursor.getColumnIndex("cod_trabajador")
-            if (columnIndex != -1) {
-                codigoTrabajador = cursor.getInt(columnIndex)
-            }
-        }
-
-        cursor.close()
-        return codigoTrabajador
-    }
 
 
 

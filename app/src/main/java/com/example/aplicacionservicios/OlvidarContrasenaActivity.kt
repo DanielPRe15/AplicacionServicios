@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 
@@ -34,12 +35,32 @@ class OlvidarContrasenaActivity : AppCompatActivity() {
 
                     if(task.isSuccessful){
                         progressBar.visibility=View.VISIBLE
-                        startActivity(Intent(this,MainActivity::class.java))
+                        mostrarAlerta("Correo Enviado Correctamente")
+
                     }
                     else {
-                        Toast.makeText(this,"Error al Enviar Correo", Toast.LENGTH_LONG).show()
+                        mostrarAlerta("Error al Enviar Correo")
+
                     }
                 }
         }
+    }
+
+    private fun Pass()
+    {
+        startActivity(Intent(this,MainActivity ::class.java))
+    }
+
+
+    private fun mostrarAlerta(mensaje: String) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Éxito")
+        builder.setMessage(mensaje)
+        builder.setPositiveButton("OK") { dialog, _ ->
+            Pass()
+            dialog.dismiss() // Cierra el diálogo
+        }
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
     }
 }

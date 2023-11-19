@@ -23,18 +23,20 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 
-class ServicioPlomeriaActivity : AppCompatActivity(), AdapterView.OnItemClickListener{
+class ServicioPlomeriaActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 
-    private lateinit var txtPlomCliente : TextInputEditText
-    private lateinit var txtPlomTelefono : TextInputEditText
-    private lateinit var txtPlomFecha : TextInputEditText
-    private lateinit var txtPlomDireccion : TextInputEditText
-    private lateinit var txtPlomInformacion : TextInputEditText
+    private lateinit var txtPlomCliente: TextInputEditText
+    private lateinit var txtPlomTelefono: TextInputEditText
+    private lateinit var txtPlomFecha: TextInputEditText
+    private lateinit var txtPlomDireccion: TextInputEditText
+    private lateinit var txtPlomInformacion: TextInputEditText
 
-    private lateinit var atvPlomServicio : AutoCompleteTextView
+    private lateinit var atvPlomServicio: AutoCompleteTextView
 
-    private lateinit var btnPlomSiguiente : Button
-    private lateinit var btnPlomCancelar : Button
+    private lateinit var btnPlomSiguiente: Button
+    private lateinit var btnPlomCancelar: Button
+
+    private lateinit var data: List<String>
 
     var posTipos=-1
 
@@ -59,13 +61,12 @@ class ServicioPlomeriaActivity : AppCompatActivity(), AdapterView.OnItemClickLis
         btnPlomSiguiente.setOnClickListener {
             val phoneNumber = txtPlomTelefono.text.toString()
             if (!validarTelefono(phoneNumber)) {
-                // Si el teléfono no cumple con las condiciones, mostrar un mensaje de error
+
                 txtPlomTelefono.error = "Ingrese un número de teléfono válido"
 
 
             } else {
-                // Si el teléfono es válido, continuar con la lógica deseada
-                // Ejemplo: Ir a otra actividad o realizar alguna operación
+
                 siguiente()
 
             }
@@ -82,10 +83,10 @@ class ServicioPlomeriaActivity : AppCompatActivity(), AdapterView.OnItemClickLis
                 } else {
                     val phoneNumber = txtPlomTelefono.text.toString()
                     if (!validarTelefono(phoneNumber)) {
-                        // Si el teléfono no cumple con las condiciones, mostrar un mensaje de error
+
                         txtPlomTelefono.error = "Ingrese un número de teléfono válido"
                     } else {
-                        // Si todos los campos están completos y el teléfono es válido, continuar con la lógica deseada
+
                         siguiente()
                     }
                 }
@@ -117,8 +118,10 @@ class ServicioPlomeriaActivity : AppCompatActivity(), AdapterView.OnItemClickLis
         }
 
         if (date != null) {
-            val nombreServicio = "Servicio Tecnico" // Reemplazar con el nombre real del servicio que estás registrando
+            val nombreServicio = "Servicio Tecnico"
+            val nombreTipoServicio = data[posTipos]
             val codigoServicio = ArregloServicio().obtenerCodigoServicio(nombreServicio)
+
 
             if (codigoServicio != -1) {
                 val precioTipoServicio = if (posTipos != -1) {
@@ -148,10 +151,11 @@ class ServicioPlomeriaActivity : AppCompatActivity(), AdapterView.OnItemClickLis
     fun mostrarReporte(servicioPlomeria: ServicioPlomeria) {
         val dateFormat = SimpleDateFormat("dd/MM/yyyy")
         val fechaFormateada = dateFormat.format(servicioPlomeria.fecha)
+        val nombreTipoServicio = data[posTipos]
 
         val precioTipoServicio = if (posTipos != -1) {
             val precio = ArregloServicioTecnicoTipo().obtenerPrecioPorCodigo(posTipos)
-            "Precio: $precio" // Mostrar el precio del tipo de servicio en el reporte
+            "Precio: $precio"
         } else {
             "Precio: No disponible"
         }
@@ -165,16 +169,16 @@ class ServicioPlomeriaActivity : AppCompatActivity(), AdapterView.OnItemClickLis
 
 
         val builder = AlertDialog.Builder(this, R.style.CustomAlertDialogStyle)
-        builder.setTitle("Reporte del Servicio Técnico")
+        builder.setTitle("Resumen del Pedido")
         builder.setMessage(reporte)
 
         builder.setPositiveButton("Confirmar Pedido") { dialog, which ->
-            // Aquí iría la lógica para confirmar el pedido
-            confirmarPedido(servicioPlomeria, precioTipoServicio)
+
+            confirmarPedido(servicioPlomeria, precioTipoServicio, nombreTipoServicio)
         }
 
         builder.setNegativeButton("Cancelar") { dialog, which ->
-            // Aquí podrías realizar alguna acción si se cancela el reporte
+
             Toast.makeText(this, "Reporte cancelado", Toast.LENGTH_SHORT).show()
         }
 
@@ -183,24 +187,25 @@ class ServicioPlomeriaActivity : AppCompatActivity(), AdapterView.OnItemClickLis
     }
 
 
-    fun confirmarPedido(servicioPlomeria: ServicioPlomeria, precioServicio: String) {
+    fun confirmarPedido(servicioPlomeria: ServicioPlomeria, precioServicio: String, nombreTipoServicio: String) {
         val arregloServicioPlomeria = ArregloServicioPlomeria()
 
-        // Simular la adición del servicio técnico a la lista
+
         val resultado = arregloServicioPlomeria.adicionar(servicioPlomeria)
 
         if (resultado > 0) {
-            // Acciones posteriores a la confirmación exitosa del pedido
+
             Toast.makeText(this, "Pedido confirmado exitosamente", Toast.LENGTH_SHORT).show()
 
 
             val intent = Intent(this, ConfirmacionActivity::class.java)
             intent.putExtra("precio", precioServicio)
+            intent.putExtra("nombreTipoServicio", nombreTipoServicio)
             startActivity(intent)
 
-            // Aquí podrías redirigir a otra actividad, limpiar los campos, etc.
+
         } else {
-            // Si falla la confirmación del pedido
+
             Toast.makeText(this, "Error al confirmar el pedido", Toast.LENGTH_SHORT).show()
         }
     }
@@ -215,7 +220,7 @@ class ServicioPlomeriaActivity : AppCompatActivity(), AdapterView.OnItemClickLis
 
     fun cargarTipos(){
         //invocar al método listadoDistritos
-        var data= ArregloServicioPlomeriaTipo().listadoTipos()
+         data = ArregloServicioPlomeriaTipo().listadoTipos()
         //crear un adaptador con los valores de data
         var adaptador= ArrayAdapter(this,android.R.layout.simple_list_item_1,data)
         //enviar el objeto "adaptador" al atributo atvDistrito

@@ -12,6 +12,7 @@ import java.util.Locale
 class ConfirmacionActivity : AppCompatActivity() {
     private lateinit var txtFechasRepo: TextView
     private lateinit var txtPrecio: TextView
+    private lateinit var txtTipoServicioRepo : TextView
 
 
     private lateinit var btnAceptar:Button
@@ -21,6 +22,8 @@ class ConfirmacionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_confirmacion)
         txtFechasRepo=findViewById(R.id.txtFechasRepo)
+        txtTipoServicioRepo=findViewById(R.id.txtTipoServicioRepo)
+
         txtPrecio=findViewById(R.id.txtPrecio)
         btnAceptar= findViewById(R.id.btnAceptar)
         btnAceptar.setOnClickListener {aceptar()}
@@ -33,10 +36,14 @@ class ConfirmacionActivity : AppCompatActivity() {
         val currentDate = dateFormat.format(calendar.time)
 
         // Mostrar la fecha en un TextView (o donde desees en tu reporte)
-        txtFechasRepo.text = "Fecha actual: $currentDate"
+        txtFechasRepo.text = currentDate
 
         val precioServicio = intent.getStringExtra("precio")
         txtPrecio.text =  precioServicio
+
+
+        val TipoServicio = intent.getStringExtra("nombreTipoServicio")
+        txtTipoServicioRepo.text = TipoServicio
 
     }
     fun aceptar(){

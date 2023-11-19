@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -56,43 +57,77 @@ class MainActivity : AppCompatActivity() {
         val usuario: String = txtUsuario.text.toString()
         val contrasena: String = txtContrasena.text.toString()
 
-        if (!TextUtils.isEmpty(usuario) && !TextUtils.isEmpty(contrasena)) {
+        if (usuario.isNotEmpty() && contrasena.isNotEmpty()) {
             progressBar.visibility = View.VISIBLE
 
-            auth.signInWithEmailAndPassword(usuario, contrasena)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        val currentUser = FirebaseAuth.getInstance().currentUser
-                        if (currentUser != null) {
-                            val userId = currentUser.uid
-                            val usuariosRef = FirebaseFirestore.getInstance().collection("usuarios").document(userId)
+            if (android.util.Patterns.EMAIL_ADDRESS.matcher(usuario).matches()) {
 
-                            usuariosRef.get()
-                                .addOnSuccessListener { document ->
-                                    if (document != null && document.exists()) {
-                                        val rol = document.getString("rol")
-                                        // Redirigir según el rol obtenido
-                                        when (rol) {
-                                            "administrador" -> ingresarAdmin()
-                                            "cliente" -> ingresarUsu()
-                                            else -> {
-                                                // Manejar otros roles o situaciones
-                                                Toast.makeText(this, "Rol desconocido", Toast.LENGTH_LONG).show()
+                if (contrasena.length >= 5) {
+
+                    auth.signInWithEmailAndPassword(usuario, contrasena)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                val currentUser = FirebaseAuth.getInstance().currentUser
+                                if (currentUser != null) {
+                                    val userId = currentUser.uid
+                                    val usuariosRef =
+                                        FirebaseFirestore.getInstance().collection("usuarios")
+                                            .document(userId)
+
+                                    usuariosRef.get()
+                                        .addOnSuccessListener { document ->
+                                            if (document != null && document.exists()) {
+                                                val rol = document.getString("rol")
+                                                // Redirigir según el rol obtenido
+                                                when (rol) {
+                                                    "administrador" -> ingresarAdmin()
+                                                    "cliente" -> ingresarUsu()
+                                                    else -> {
+                                                        // Manejar otros roles o situaciones
+                                                        Toast.makeText(
+                                                            this,
+                                                            "Rol desconocido",
+                                                            Toast.LENGTH_LONG
+                                                        ).show()
+                                                    }
+                                                }
                                             }
                                         }
-                                    }
+                                        .addOnFailureListener { exception ->
+                                            // Manejar el fallo al obtener la información del usuario
+                                            Toast.makeText(
+                                                this,
+                                                "Error al obtener información del usuario",
+                                                Toast.LENGTH_LONG
+                                            ).show()
+                                        }
                                 }
-                                .addOnFailureListener { exception ->
-                                    // Manejar el fallo al obtener la información del usuario
-                                    Toast.makeText(this, "Error al obtener información del usuario", Toast.LENGTH_LONG).show()
-                                }
+                            } else {
+                                // Manejar fallos en el inicio de sesión
+                                Toast.makeText(this, "Error al iniciar sesión", Toast.LENGTH_LONG)
+                                    .show()
+                                progressBar.visibility = View.GONE
+                            }
+
                         }
-                    } else {
-                        // Manejar fallos en el inicio de sesión
-                        Toast.makeText(this, "Error al iniciar sesión", Toast.LENGTH_LONG).show()
-                        progressBar.visibility = View.GONE
-                    }
                 }
+                else{
+
+                    txtContrasena.error = "Contraseña invalida! "
+                    mostrarAlerta("Por favor, Ingrese una contraseña valida")
+                    progressBar.visibility = View.GONE
+                }
+            }
+            else{
+                txtUsuario.error = "Correo electrónico no válido"
+                mostrarAlerta("Por favor, ingrese un formato correcto para el correo")
+                progressBar.visibility = View.GONE
+            }
+        }
+        else{
+            // Mostrar un mensaje si algún campo está vacío
+            mostrarAlerta("Por favor, complete todos los campos")
+            progressBar.visibility = View.GONE
         }
     }
 
@@ -132,7 +167,16 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this,PrincipalAdminActivity ::class.java))
     }
 
-
+    private fun mostrarAlerta(mensaje: String) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Advertencia")
+        builder.setMessage(mensaje)
+        builder.setPositiveButton("OK") { dialog, _ ->
+            dialog.dismiss() // Cierra el diálogo
+        }
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
 
 
 

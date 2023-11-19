@@ -36,6 +36,8 @@ class ServicioEnfermeriaActivity : AppCompatActivity(),AdapterView.OnItemClickLi
     private lateinit var btnEnferSiguiente: Button
     private lateinit var btnEnferCancelar: Button
 
+    private lateinit var data: List<String>
+
     var posTipos=-1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,13 +60,12 @@ class ServicioEnfermeriaActivity : AppCompatActivity(),AdapterView.OnItemClickLi
         btnEnferSiguiente.setOnClickListener {
             val phoneNumber = txtEnferTelefono.text.toString()
             if (!validarTelefono(phoneNumber)) {
-                // Si el teléfono no cumple con las condiciones, mostrar un mensaje de error
+
                 txtEnferTelefono.error = "Ingrese un número de teléfono válido"
 
 
             } else {
-                // Si el teléfono es válido, continuar con la lógica deseada
-                // Ejemplo: Ir a otra actividad o realizar alguna operación
+
                 siguiente()
 
             }
@@ -81,10 +82,10 @@ class ServicioEnfermeriaActivity : AppCompatActivity(),AdapterView.OnItemClickLi
                 } else {
                     val phoneNumber = txtEnferTelefono.text.toString()
                     if (!validarTelefono(phoneNumber)) {
-                        // Si el teléfono no cumple con las condiciones, mostrar un mensaje de error
+
                         txtEnferTelefono.error = "Ingrese un número de teléfono válido"
                     } else {
-                        // Si todos los campos están completos y el teléfono es válido, continuar con la lógica deseada
+
                         siguiente()
                     }
                 }
@@ -116,7 +117,7 @@ class ServicioEnfermeriaActivity : AppCompatActivity(),AdapterView.OnItemClickLi
         }
 
         if (date != null) {
-            val nombreServicio = "Servicio Tecnico" // Reemplazar con el nombre real del servicio que estás registrando
+            val nombreServicio = "Servicio Tecnico"
             val codigoServicio = ArregloServicio().obtenerCodigoServicio(nombreServicio)
 
             if (codigoServicio != -1) {
@@ -147,10 +148,11 @@ class ServicioEnfermeriaActivity : AppCompatActivity(),AdapterView.OnItemClickLi
     fun mostrarReporte(servicioEnfermeria: ServicioEnfermeria) {
         val dateFormat = SimpleDateFormat("dd/MM/yyyy")
         val fechaFormateada = dateFormat.format(servicioEnfermeria.fecha)
+        val nombreTipoServicio = data[posTipos]
 
         val precioTipoServicio = if (posTipos != -1) {
             val precio = ArregloServicioTecnicoTipo().obtenerPrecioPorCodigo(posTipos)
-            "Precio: $precio" // Mostrar el precio del tipo de servicio en el reporte
+            "Precio: $precio"
         } else {
             "Precio: No disponible"
         }
@@ -164,16 +166,16 @@ class ServicioEnfermeriaActivity : AppCompatActivity(),AdapterView.OnItemClickLi
 
 
         val builder = AlertDialog.Builder(this, R.style.CustomAlertDialogStyle)
-        builder.setTitle("Reporte del Servicio Técnico")
+        builder.setTitle("Resumen del Pedido")
         builder.setMessage(reporte)
 
         builder.setPositiveButton("Confirmar Pedido") { dialog, which ->
-            // Aquí iría la lógica para confirmar el pedido
-            confirmarPedido(servicioEnfermeria, precioTipoServicio)
+
+            confirmarPedido(servicioEnfermeria, precioTipoServicio, nombreTipoServicio)
         }
 
         builder.setNegativeButton("Cancelar") { dialog, which ->
-            // Aquí podrías realizar alguna acción si se cancela el reporte
+
             Toast.makeText(this, "Reporte cancelado", Toast.LENGTH_SHORT).show()
         }
 
@@ -182,23 +184,24 @@ class ServicioEnfermeriaActivity : AppCompatActivity(),AdapterView.OnItemClickLi
     }
 
 
-    fun confirmarPedido(servicioEnfermeria: ServicioEnfermeria, precioServicio: String) {
+    fun confirmarPedido(servicioEnfermeria: ServicioEnfermeria, precioServicio: String, nombreTipoServicio: String) {
         val arregloServicioEnfermeria = ArregloServicioEnfermeria()
 
-        // Simular la adición del servicio técnico a la lista
+
         val resultado = arregloServicioEnfermeria.adicionar(servicioEnfermeria)
 
         if (resultado > 0) {
-            // Acciones posteriores a la confirmación exitosa del pedido
+
             Toast.makeText(this, "Pedido confirmado exitosamente", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, ConfirmacionActivity::class.java)
             intent.putExtra("precio", precioServicio)
+            intent.putExtra("nombreTipoServicio", nombreTipoServicio)
             startActivity(intent)
 
-            // Aquí podrías redirigir a otra actividad, limpiar los campos, etc.
+
         } else {
-            // Si falla la confirmación del pedido
+
             Toast.makeText(this, "Error al confirmar el pedido", Toast.LENGTH_SHORT).show()
         }
     }
@@ -213,7 +216,7 @@ class ServicioEnfermeriaActivity : AppCompatActivity(),AdapterView.OnItemClickLi
 
     fun cargarTipos(){
         //invocar al método listadoDistritos
-        var data= ArregloServicioEnfermeriaTipo().listadoTipos()
+        data= ArregloServicioEnfermeriaTipo().listadoTipos()
         //crear un adaptador con los valores de data
         var adaptador= ArrayAdapter(this,android.R.layout.simple_list_item_1,data)
         //enviar el objeto "adaptador" al atributo atvDistrito

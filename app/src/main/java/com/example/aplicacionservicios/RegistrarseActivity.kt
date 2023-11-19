@@ -62,52 +62,84 @@ class RegistrarseActivity  : AppCompatActivity(){
     }
 
     private fun createNewAccount() {
-        val nombre: String = txtNombreRE.text.toString()
-        val apellido: String = txtApellidoRE.text.toString()
-        val correo: String = txtCorreoRE.text.toString()
-        val contrasena: String = txtContrasena.text.toString()
+        val nombre: String = txtNombreRE.text.toString().trim()
+        val apellido: String = txtApellidoRE.text.toString().trim()
+        val correo: String = txtCorreoRE.text.toString().trim()
+        val contrasena: String = txtContrasena.text.toString().trim()
         val db = Firebase.firestore
         val collectionName = "usuarios"
 
-        if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(apellido) && !TextUtils.isEmpty(correo) && !TextUtils.isEmpty(contrasena)) {
-            progressBar.visibility = View.VISIBLE
+        if (nombre.isNotEmpty() && apellido.isNotEmpty() && correo.isNotEmpty() && contrasena.isNotEmpty()) {
+            // Validar el formato del correo electrónico
+            if (android.util.Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
+                progressBar.visibility = View.VISIBLE
 
-            auth.createUserWithEmailAndPassword(correo, contrasena)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        val user: FirebaseUser? = auth.currentUser
+                if (contrasena.length >= 5) {
 
-                        // Verificar si el usuario existe y su email está verificado
-                        verificarEmail(user)
+                    auth.createUserWithEmailAndPassword(correo, contrasena)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                val user: FirebaseUser? = auth.currentUser
 
-                        // Obtener el UID del usuario creado
-                        val uid = user?.uid
+                                // Verificar si el usuario existe y su email está verificado
+                                verificarEmail(user)
 
-                        // Verificar si el UID no es nulo y luego guardar los datos en Firestore
-                        if (uid != null) {
-                            val userDocument = db.collection(collectionName).document(uid)
-                            userDocument.set(
-                                mapOf(
-                                    "nombre" to nombre,
-                                    "apellido" to apellido,
-                                    "rol" to "cliente"
-                                )
-                            ).addOnSuccessListener {
-                                // Documento creado exitosamente
-                                registrado()
-                            }.addOnFailureListener { e ->
-                                // Manejar el fallo al crear el documento en Firestore
-                                Toast.makeText(this, "Error al crear documento en Firestore: ${e.message}", Toast.LENGTH_LONG).show()
+                                // Obtener el UID del usuario creado
+                                val uid = user?.uid
+
+                                // Verificar si el UID no es nulo y luego guardar los datos en Firestore
+                                if (uid != null) {
+                                    val userDocument = db.collection(collectionName).document(uid)
+                                    userDocument.set(
+                                        mapOf(
+                                            "nombre" to nombre,
+                                            "apellido" to apellido,
+                                            "rol" to "cliente"
+                                        )
+                                    ).addOnSuccessListener {
+                                        registrado()
+
+                                    }.addOnFailureListener { e ->
+                                        // Manejar el fallo al crear el documento en Firestore
+                                        Toast.makeText(
+                                            this,
+                                            "Error al crear documento en Firestore: ${e.message}",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                    }
+                                }
+
+                            } else {
+                                // Manejar el fallo en la creación de la cuenta de usuario
+                                Toast.makeText(
+                                    this,
+                                    "Error al crear la cuenta: ${task.exception?.message}",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                                progressBar.visibility = View.GONE
                             }
                         }
-                    } else {
-                        // Manejar el fallo en la creación de la cuenta de usuario
-                        Toast.makeText(this, "Error al crear la cuenta: ${task.exception?.message}", Toast.LENGTH_LONG).show()
-                        progressBar.visibility = View.GONE
-                    }
                 }
+                else {
+                    txtContrasena.error = "Contraseña invalida! "
+                    mostrarAlerta("Por favor, Ingrese una contraseña valida, la contraseña debe ser mayor a 5 caracteres")
+                    progressBar.visibility = View.GONE
+                }
+
+            } else {
+                // Mostrar un mensaje de error si el correo electrónico no tiene un formato válido
+                txtCorreoRE.error = "Correo electrónico no válido"
+                mostrarAlerta("Por favor, ingrese un formato correcto para el correo")
+                progressBar.visibility = View.GONE
+
+            }
+        } else {
+            // Mostrar un mensaje si algún campo está vacío
+            mostrarAlerta("Por favor, complete todos los campos")
+            progressBar.visibility = View.GONE
         }
     }
+
 
     private fun registrado()
     {
@@ -121,30 +153,33 @@ class RegistrarseActivity  : AppCompatActivity(){
                 task ->
                 if(task.isComplete)
                 {
-                    mostrarAlerta("Correo Enviado")
+                    Toast.makeText(this, "Correo Enviado", Toast.LENGTH_LONG).show()
+
 
                 }
                 else
                 {
-                    mostrarAlerta("Error al enviar correo")
+                    Toast.makeText(this, "Error al enviar correo", Toast.LENGTH_LONG).show()
+
 
                 }
 
             }
     }
 
-
     private fun mostrarAlerta(mensaje: String) {
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Mensaje")
+        builder.setTitle("Advertencia")
         builder.setMessage(mensaje)
         builder.setPositiveButton("OK") { dialog, _ ->
-            // Acción al presionar OK, si es necesario
             dialog.dismiss() // Cierra el diálogo
         }
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
+
+
+
 
 
 }
