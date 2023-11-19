@@ -3,4 +3,10 @@
     <string name="title_activity_maps">MapsActivity</string>
 
 
+    <string name="labelNombre">Ingrese Nombre</string>
+    <string name="labelApellido">Ingrese Apellido</string>
+    <string name="labelTelefono">Ingrese Telefono</string>
+    <string name="labelEdad">Ingrese edad</string>
+    <string name="labelFoto">Ingrese codigo de foto</string>
+
 </resources>

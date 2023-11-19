@@ -24,7 +24,7 @@ class PrincipalAdminActivity : AppCompatActivity() {
     }
     fun trabajadores()
     {
-
+        startActivity(Intent(this,TrabajadorMainActivity ::class.java))
     }
     fun pedidos(){
 
