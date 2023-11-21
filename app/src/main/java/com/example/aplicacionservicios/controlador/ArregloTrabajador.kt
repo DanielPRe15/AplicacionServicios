@@ -11,7 +11,7 @@ class ArregloTrabajador {
         //abrir el acceso a la base de datos en modo lectura
         var cn: SQLiteDatabase = appConfig.BD.readableDatabase
         //sentencia SQL
-        var SQL="select *from tb_trabajador"
+        var SQL="select * from tb_trabajador"
         //ejecutar sentencia SQL
         //guardar el valor de retorno del método rawQuery
         //en un objeto de tipo Cursor
@@ -39,8 +39,8 @@ class ArregloTrabajador {
         var row= ContentValues()
         //claves
         row.put("nomb",bean.nombre)
-        row.put("apel",bean.apellido)
-        row.put("tele",bean.telefono)
+        row.put("apell",bean.apellido)
+        row.put("telefono",bean.telefono)
         row.put("edad",bean.edad)
         row.put("foto",bean.foto)
         //invocar al método insert
@@ -58,8 +58,8 @@ class ArregloTrabajador {
         //claves
         row.put("cod",bean.codigo)
         row.put("nomb",bean.nombre)
-        row.put("apel",bean.apellido)
-        row.put("tele",bean.telefono)
+        row.put("apell",bean.apellido)
+        row.put("telefono",bean.telefono)
         row.put("edad",bean.edad)
         row.put("foto",bean.foto)
         //invocar al método update

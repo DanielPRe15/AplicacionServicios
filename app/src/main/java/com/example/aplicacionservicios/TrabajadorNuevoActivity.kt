@@ -56,9 +56,10 @@ class TrabajadorNuevoActivity: AppCompatActivity(), AdapterView.OnItemClickListe
         else
             Toast.makeText(this,"Error en el registro", Toast.LENGTH_LONG).show()
 
+        salir()
     }
     fun salir(){
-        var intent= Intent(this,MainActivity::class.java)
+        var intent= Intent(this,TrabajadorMainActivity::class.java)
         startActivity(intent)
     }
 
