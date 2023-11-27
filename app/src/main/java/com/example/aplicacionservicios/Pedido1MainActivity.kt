@@ -14,11 +14,14 @@ import com.example.aplicacionservicios.controlador.ArregloTrabajador
 class Pedido1MainActivity: AppCompatActivity() {
     private lateinit var rvPedido1: RecyclerView
     private lateinit var btnPed1Nuevo: Button
+    private lateinit var btnPed1MainSalir: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pedido1_main)
         rvPedido1=findViewById(R.id.rvPedido1)
         btnPed1Nuevo=findViewById(R.id.btnPed1Nuevo)
+        btnPed1MainSalir=findViewById(R.id.btnPed1MainSalir)
+        btnPed1MainSalir.setOnClickListener {salir()}
         btnPed1Nuevo.setOnClickListener {nuevo()}
 
         //invocar al método listado
@@ -36,4 +39,8 @@ class Pedido1MainActivity: AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun salir(){
+        val intent= Intent(this,PrincipalAdminActivity::class.java)
+        startActivity(intent)
+    }
 }

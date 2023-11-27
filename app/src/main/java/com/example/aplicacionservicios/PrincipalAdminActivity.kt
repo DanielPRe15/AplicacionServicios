@@ -14,9 +14,14 @@ import com.google.firebase.auth.FirebaseAuth
 
 class PrincipalAdminActivity : AppCompatActivity() {
 
+    private lateinit var  buttonEliminar: Button
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_principal_admin)
+        buttonEliminar=findViewById(R.id.buttonEliminar)
+        buttonEliminar.setOnClickListener {eliminar()}
     }
 
     fun cerrarSesion(view: View) {
@@ -40,4 +45,20 @@ class PrincipalAdminActivity : AppCompatActivity() {
     fun servicios(){
 
     }
+
+    fun eliminar(){
+                var cod1:Int
+                cod1=4
+                var estado=ArregloServicioTecnico().eliminar(cod1)
+                //validar estado
+                if (estado>0)
+                    Toast.makeText(this,"Pedido eliminado", Toast.LENGTH_LONG).show()
+                else
+                    Toast.makeText(this,"Error en la eliminación", Toast.LENGTH_LONG).show()
+
+    }
+
+
+
+
 }

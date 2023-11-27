@@ -32,9 +32,9 @@ class ServicioAdapter(var data:ArrayList<Servicio>): RecyclerView.Adapter<ViewSe
 
     //2
     override fun onBindViewHolder(holder: ViewServicio, position: Int) {
-        holder.tvServCodi.text=data.get(position).codigo.toString()
-        holder.tvServNomb.text = data.get(position).nombre
-        holder.tvServTraba.text=data.get(position).codigoTrabajador.toString()
+       // holder.tvServCodi.text=data.get(position).codigo.toString()
+        holder.tvServicio.text = data.get(position).nombre
+        //holder.tvServTraba.text=data.get(position).codigoTrabajador.toString()
 
         //contexto de ViewDocente
         var contexto: Context = holder.itemView.context

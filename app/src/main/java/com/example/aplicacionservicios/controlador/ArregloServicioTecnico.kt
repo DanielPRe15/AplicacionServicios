@@ -94,7 +94,7 @@ class ArregloServicioTecnico {
         // Aquí debes implementar la lógica para convertir la cadena a un objeto Date
         // Puedes utilizar SimpleDateFormat u otras clases de java.time si estás usando Java 8 o superior.
         // Ejemplo con SimpleDateFormat:
-        val formato = SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH)
+        val formato = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
         return formato.parse(fechaString) ?: Date()
     }
 
@@ -102,14 +102,15 @@ class ArregloServicioTecnico {
         var salida=-1
         var cn=appConfig.BD.writableDatabase
         var row= ContentValues()
-        var fechaString = bean.fecha.toString()
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss") // Formato de fecha deseado
+        val fechaFormateada = sdf.format(bean.fecha)
 
         row.put("cod_servicotec",bean.codigoServicioTec)
         row.put("cod_servicio",bean.codigoServi)
         row.put("cod_tiposervicotec",bean.codigoTipo)
         row.put("nom_cliente",bean.nombreCliente)
         row.put("telef_cliente",bean.telefonoCliente)
-        row.put("fecha",fechaString)
+        row.put("fecha",fechaFormateada)
         row.put("direc_cliente",bean.direccionCliente)
         row.put("informacioadi",bean.informacionAdicional)
 

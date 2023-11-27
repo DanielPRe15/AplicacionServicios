@@ -29,7 +29,8 @@
                 android:id="@+id/txtPed1CodigoServicioNew"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:hint="Codigo del Servicio" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -41,7 +42,8 @@
                 android:id="@+id/txtPed1CodigoTipoNew"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:hint="Codigo del tipo de servicio"  />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -52,7 +54,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtPed1ClienteNew"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:hint="Cliente"  />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField2"
@@ -62,7 +65,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtPed1TelefClienteNew"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:hint="Telefono" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField3"
@@ -73,7 +77,8 @@
                 android:id="@+id/txtPed1FechaNew"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="showDatePickerDialog" />
+                android:onClick="showDatePickerDialog"
+                android:hint="Ingrese Fecha" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,7 +90,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtPed1DireccionNew"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:hint="Direccion"  />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField5"
@@ -95,7 +101,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtPed1InfoNew"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:hint="Informacion adicional"  />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout

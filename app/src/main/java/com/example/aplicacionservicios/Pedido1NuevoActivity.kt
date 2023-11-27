@@ -61,6 +61,7 @@ class Pedido1NuevoActivity: AppCompatActivity(), AdapterView.OnItemClickListener
 
         var dateFormat = SimpleDateFormat("dd/MM/yyyy")
         var date: Date? = null
+
         try {
             date = dateFormat.parse(fecha)
         } catch (e: ParseException) {

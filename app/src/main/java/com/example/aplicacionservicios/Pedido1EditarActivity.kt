@@ -18,6 +18,7 @@ import com.example.aplicacionservicios.controlador.ArregloTrabajador
 import com.example.aplicacionservicios.entidad.ServicioTecnico
 import com.example.aplicacionservicios.entidad.Trabajador
 import com.google.android.material.textfield.TextInputEditText
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.util.Calendar
@@ -72,28 +73,20 @@ class Pedido1EditarActivity: AppCompatActivity(), AdapterView.OnItemClickListene
         dire= txtPed1Direccion.text.toString()
         info=txtPed1Info.text.toString()
 
-        val dateString = fech
 
-        val dateFormat = SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy",
-            Locale.ENGLISH)
-
-
-        var fech_form : java.util.Date = Date()
+        var dateFormat = SimpleDateFormat("dd/MM/yyyy")
+        var date: Date? = null
 
 
         try {
-            // Convierte la cadena de fecha a un objeto Date
-            val date: Date = dateFormat.parse(dateString)
-
-            // Ahora 'date' es un objeto de tipo Date
-            println("Fecha convertida: $date")
-            fech_form = date
-        } catch (e: Exception) {
-            println("Error al convertir la fecha: ${e.message}")
+            date = dateFormat.parse(fech)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+            Toast.makeText(this, "Error en el formato de fecha", Toast.LENGTH_LONG).show()
         }
 
 
-        var ped1=ServicioTecnico(cod1,cod2,cod3,cli,telef,fech_form,dire,info)
+        var ped1=ServicioTecnico(cod1,cod2,cod3,cli,telef,date,dire,info)
         //invocar al método actualizar
         var estado=ArregloServicioTecnico().actualizar(ped1)
         //validar estado
@@ -129,7 +122,8 @@ class Pedido1EditarActivity: AppCompatActivity(), AdapterView.OnItemClickListene
     }
     fun obtenerDatos(){
         var bundle=intent.getSerializableExtra("servicioTecnico") as ServicioTecnico
-        var fechaString = bundle.fecha.toString()
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss") // Formato de fecha deseado
+        val fechaString = sdf.format(bundle.fecha)
 
         //mostrar en los controles el valor de bundle
         txtPed1Codigo.setText(bundle.codigoServicioTec.toString())
@@ -161,7 +155,6 @@ class Pedido1EditarActivity: AppCompatActivity(), AdapterView.OnItemClickListene
             month,
             day
         )
-
         datePickerDialog.show()
     }
 
