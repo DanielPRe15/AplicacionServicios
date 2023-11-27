@@ -94,7 +94,7 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
             }
 
 
-    }
+        }
 
 
 
@@ -250,23 +250,35 @@ class ServicioTecnicoActivity : AppCompatActivity(),AdapterView.OnItemClickListe
         val datePickerDialog = DatePickerDialog(
             this,
             { _, yearSelected, monthOfYear, dayOfMonth ->
-                val selectedDate = "$dayOfMonth/${monthOfYear + 1}/$yearSelected"
-                editText.setText(selectedDate)
+                val selectedCalendar = Calendar.getInstance()
+                selectedCalendar.set(yearSelected, monthOfYear, dayOfMonth)
+
+                val currentCalendar = Calendar.getInstance()
+
+                if (selectedCalendar < currentCalendar) {
+                    // Fecha seleccionada es menor a la fecha actual
+                    Toast.makeText(this, "Seleccione una fecha válida", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Establecer la fecha seleccionada en el EditText
+                    val selectedDate = "$dayOfMonth/${monthOfYear + 1}/$yearSelected"
+                    editText.setText(selectedDate)
+                }
             },
             year,
             month,
             day
         )
 
+        datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000 // Restringe fechas anteriores al día de hoy
         datePickerDialog.show()
     }
 
 
-private fun validarTelefono(phone: String): Boolean {
-    // Patrón para aceptar solo números y longitud de 9 dígitos
-    val regex = Regex("^[0-9]{9}$")
-    return regex.matches(phone)
-}
+    private fun validarTelefono(phone: String): Boolean {
+        // Patrón para aceptar solo números y longitud de 9 dígitos
+        val regex = Regex("^[0-9]{9}$")
+        return regex.matches(phone)
+    }
 
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {

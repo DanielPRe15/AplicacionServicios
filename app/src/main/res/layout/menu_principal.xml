@@ -46,6 +46,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <EditText
+                android:id="@+id/editTextSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Buscar servicio..."
+                android:inputType="text"
+                android:imeOptions="actionDone"
+                app:layout_constraintTop_toBottomOf="@id/imageView" />
+
+
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvServicio"
                 android:layout_width="match_parent"

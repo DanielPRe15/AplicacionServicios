@@ -237,14 +237,26 @@ class ServicioHogarActivity : AppCompatActivity(),AdapterView.OnItemClickListene
         val datePickerDialog = DatePickerDialog(
             this,
             { _, yearSelected, monthOfYear, dayOfMonth ->
-                val selectedDate = "$dayOfMonth/${monthOfYear + 1}/$yearSelected"
-                editText.setText(selectedDate)
+                val selectedCalendar = Calendar.getInstance()
+                selectedCalendar.set(yearSelected, monthOfYear, dayOfMonth)
+
+                val currentCalendar = Calendar.getInstance()
+
+                if (selectedCalendar < currentCalendar) {
+                    // Fecha seleccionada es menor a la fecha actual
+                    Toast.makeText(this, "Seleccione una fecha válida", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Establecer la fecha seleccionada en el EditText
+                    val selectedDate = "$dayOfMonth/${monthOfYear + 1}/$yearSelected"
+                    editText.setText(selectedDate)
+                }
             },
             year,
             month,
             day
         )
 
+        datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000 // Restringe fechas anteriores al día de hoy
         datePickerDialog.show()
     }
 
