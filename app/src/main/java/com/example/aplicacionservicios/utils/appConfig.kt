@@ -3,8 +3,6 @@ package com.example.aplicacionservicios.utils
 import android.app.Application
 import android.content.Context
 import com.example.aplicacionservicios.base.InitBD
-import com.google.firebase.FirebaseApp
-import javax.inject.Inject
 
 class appConfig: Application() {
 

@@ -7,72 +7,109 @@
 
     <LinearLayout
         android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField1"
-            android:layout_width="match_parent"
+            android:id="@+id/outlinedTextField12"
+            android:layout_width="390dp"
             android:layout_height="wrap_content"
-            android:hint="@string/labelNombre">
+            tools:ignore="DuplicateIds">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtTrabNombreNew"
+                android:id="@+id/txtPed1Codigo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField11"
+            android:layout_width="389dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtPed1CodigoServicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtPed1CodigoTipo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtPed1Cliente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/labelApellido">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtTrabApellidoNew"
+                android:id="@+id/txtPed1TelefCliente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/labelTelefono">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtTrabTelefonoNew"
+                android:id="@+id/txtPed1Fecha"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:onClick="showDatePickerDialog" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/labelEdad">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtTrabEdadNew"
+                android:id="@+id/txtPed1Direccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField5"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/labelFoto">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtPed1InfoNew"
+                android:id="@+id/txtPed1Info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -83,11 +120,11 @@
                 android:paddingTop="50dp">
 
                 <Button
-                    android:id="@+id/btnTrabGrabar"
+                    android:id="@+id/btnPed1Actualizar"
                     android:layout_width="161dp"
                     android:layout_height="wrap_content"
-                    android:text="GRABAR"
-                    app:cornerRadius="5dp"/>
+                    android:text="ACTUALIZAR"
+                    app:cornerRadius="5dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -98,14 +135,22 @@
                 android:paddingTop="50dp">
 
                 <Button
-                    android:id="@+id/btnTrabSalirNew"
+                    android:id="@+id/btnPed1Eliminar"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
-                    android:text="SALIR"
-                    app:cornerRadius="5dp"/>
+                    android:text="ELIMINAR"
+                    app:cornerRadius="5dp" />
             </LinearLayout>
         </LinearLayout>
 
+        <Button
+            android:id="@+id/btnPed1Salir"
+            android:layout_width="391dp"
+            android:layout_height="28dp"
+            android:layout_weight="1"
+            android:text="SALIR" />
+
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

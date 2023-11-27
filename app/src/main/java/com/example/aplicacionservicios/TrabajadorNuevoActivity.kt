@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -29,9 +27,9 @@ class TrabajadorNuevoActivity: AppCompatActivity(), AdapterView.OnItemClickListe
         txtTrabApellidoNew=findViewById(R.id.txtTrabApellidoNew)
         txtTrabTelefonoNew=findViewById(R.id.txtTrabTelefonoNew)
         txtTrabEdadNew=findViewById(R.id.txtTrabEdadNew)
-        txtTrabFotoNew=findViewById(R.id.txtTrabFotoNew)
-        btnTrabGrabar=findViewById(R.id.btnTrabGrabar)
-        btnTrabGrabar=findViewById(R.id.btnTrabGrabar)
+        txtTrabFotoNew=findViewById(R.id.txtPed1InfoNew)
+        btnTrabGrabar=findViewById(R.id.btnPed1Grabar)
+        btnTrabGrabar=findViewById(R.id.btnPed1Grabar)
         btnTrabSalirNew=findViewById(R.id.btnTrabSalirNew)
         //
         btnTrabGrabar.setOnClickListener {grabar()}

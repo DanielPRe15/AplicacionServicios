@@ -13,4 +13,4 @@ class ServicioTecnico(
     var direccionCliente:String,
     var informacionAdicional:String,
     ):Serializable{
-}
+   }
