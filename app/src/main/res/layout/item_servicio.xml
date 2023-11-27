@@ -20,7 +20,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imgFoto"
+                android:id="@+id/imgServBaseFoto"
                 android:layout_width="116dp"
                 android:layout_height="114dp"
                 android:layout_weight="1"
@@ -45,7 +45,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvServCodi"
+                    android:id="@+id/tvServBaseCodi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
@@ -58,23 +58,12 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvServNomb"
+                    android:id="@+id/tvServBaseNomb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
 
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Trabjador"
-                    android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvServTraba"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
 
             </LinearLayout>
         </LinearLayout>

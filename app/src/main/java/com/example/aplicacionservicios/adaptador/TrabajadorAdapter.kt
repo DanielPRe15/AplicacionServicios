@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.aplicacionservicios.Pedido1EditarActivity
 import com.example.aplicacionservicios.R
 import com.example.aplicacionservicios.TrabajadorEditarActivity
 import com.example.aplicacionservicios.entidad.Trabajador
@@ -34,10 +35,12 @@ class TrabajadorAdapter(var data:ArrayList<Trabajador>): RecyclerView.Adapter<Vi
         IMG=contexto.resources.getIdentifier(data.get(position).foto,"drawable",contexto.packageName)
         holder.imgTrabFoto.setImageResource(IMG)
         //asignar evento click al objeto holder
+
         holder.itemView.setOnClickListener{
             var intent = Intent(appConfig.CONTEXT, TrabajadorEditarActivity::class.java)
             intent.putExtra("trabajador",data.get(position))
             ContextCompat.startActivity(appConfig.CONTEXT,intent,null)
+
         }
     }
 }

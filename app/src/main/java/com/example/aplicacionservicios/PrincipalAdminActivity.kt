@@ -42,7 +42,8 @@ class PrincipalAdminActivity : AppCompatActivity() {
         startActivity(Intent(this,Pedido1MainActivity ::class.java))
 
     }
-    fun servicios(){
+    fun servicios(view: View){
+        startActivity(Intent(this,ServicioBaseMainActivity ::class.java))
 
     }
 /*

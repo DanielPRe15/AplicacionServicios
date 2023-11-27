@@ -36,7 +36,7 @@ class ArregloTrabajador {
         row.put("edad",bean.edad)
         row.put("foto",bean.foto)
         //invocar al método insert
-        salida=cn.insert("tb_trabajador","cod",row).toInt()
+        salida=cn.insert("tb_trabajador","cod_trabajador",row).toInt()
         return salida
     }
 
@@ -48,14 +48,13 @@ class ArregloTrabajador {
         //crear objeto de la clase ContentValues
         var row= ContentValues()
         //claves
-        row.put("cod",bean.codigo)
         row.put("nomb",bean.nombre)
         row.put("apell",bean.apellido)
         row.put("telefono",bean.telefono)
         row.put("edad",bean.edad)
         row.put("foto",bean.foto)
         //invocar al método update
-        salida=cn.update("tb_trabajador",row,"cod=?",
+        salida=cn.update("tb_trabajador",row,"cod_trabajador=?",
             arrayOf(bean.codigo.toString()))
         return salida
     }
@@ -64,7 +63,7 @@ class ArregloTrabajador {
         //abrir acceso a la base de datos en modo escritura
         var cn=appConfig.BD.writableDatabase
         //invocar al método update
-        salida=cn.delete("tb_trabajador","cod=?",
+        salida=cn.delete("tb_trabajador","cod_trabajador=?",
             arrayOf(cod.toString()))
         return salida
     }

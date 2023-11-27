@@ -27,9 +27,8 @@ class TrabajadorNuevoActivity: AppCompatActivity(), AdapterView.OnItemClickListe
         txtTrabApellidoNew=findViewById(R.id.txtTrabApellidoNew)
         txtTrabTelefonoNew=findViewById(R.id.txtTrabTelefonoNew)
         txtTrabEdadNew=findViewById(R.id.txtTrabEdadNew)
-        txtTrabFotoNew=findViewById(R.id.txtPed1InfoNew)
-        btnTrabGrabar=findViewById(R.id.btnPed1Grabar)
-        btnTrabGrabar=findViewById(R.id.btnPed1Grabar)
+        txtTrabFotoNew=findViewById(R.id.txtTrabFotoNew)
+        btnTrabGrabar=findViewById(R.id.btnTrabGrabar)
         btnTrabSalirNew=findViewById(R.id.btnTrabSalirNew)
         //
         btnTrabGrabar.setOnClickListener {grabar()}

@@ -9,19 +9,19 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btnTrabNuevo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nuevo" />
-
-        <Button
-            android:id="@+id/btnTrabSalir2"
+            android:id="@+id/btnServBaseMainSalir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Salir" />
 
+        <Button
+            android:id="@+id/btnServBaseNuevo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nuevo" />
+
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTrabajador"
+            android:id="@+id/rvServBase"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

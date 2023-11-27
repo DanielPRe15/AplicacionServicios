@@ -45,23 +45,6 @@ class ArregloServicioTecnico {
         var SQL="select * from tb_serviciotec"
 
 
-
-
-        val dateString = ""
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
-        var fech_form : java.util.Date = Date()
-
-
-        try {
-            // Convierte la cadena de fecha a un objeto Date
-            val date: Date = dateFormat.parse(dateString)
-
-            // Ahora 'date' es un objeto de tipo Date
-            println("Fecha convertida: $date")
-            fech_form = date
-        } catch (e: Exception) {
-            println("Error al convertir la fecha: ${e.message}")
-        }
         //ejecutar sentencia SQL
         //guardar el valor de retorno del método rawQuery
         //en un objeto de tipo Cursor

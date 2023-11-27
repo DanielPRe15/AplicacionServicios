@@ -20,6 +20,11 @@ class MenuPrincipalActivity : AppCompatActivity(), ServicioAdapter.OnServicioIte
     private lateinit var editTextSearch: EditText
     private var serviciosList = ArrayList<Servicio>()
 
+
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.menu_principal)

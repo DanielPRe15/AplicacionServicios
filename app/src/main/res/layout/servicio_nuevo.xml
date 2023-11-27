@@ -11,63 +11,51 @@
         android:orientation="vertical"
         android:padding="10dp"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        tools:layout_editor_absoluteY="1dp"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField12"
+            android:layout_width="390dp"
+            android:layout_height="wrap_content"
+            tools:ignore="DuplicateIds"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField11"
+            android:layout_width="389dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtServBaseNombreNew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Nombre del Servicio" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtServBaseCodigoTrabajadorNew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Codigo del trabajador"  />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/labelNombre">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtTrabNombreNew"
+                android:id="@+id/txtServBaseFotoNew"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/labelApellido">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtTrabApellidoNew"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/labelTelefono">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtTrabTelefonoNew"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/labelEdad">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtTrabEdadNew"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/labelFoto">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtTrabFotoNew"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:hint="Codigo de foto"  />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -83,7 +71,7 @@
                 android:paddingTop="50dp">
 
                 <Button
-                    android:id="@+id/btnTrabGrabar"
+                    android:id="@+id/btnServBaseGrabar"
                     android:layout_width="161dp"
                     android:layout_height="wrap_content"
                     android:text="GRABAR"
@@ -98,7 +86,7 @@
                 android:paddingTop="50dp">
 
                 <Button
-                    android:id="@+id/btnTrabSalirNew"
+                    android:id="@+id/btnServBaseSalirNew"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
                     android:text="SALIR"

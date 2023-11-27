@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionservicios.R
@@ -16,7 +18,15 @@ import com.example.aplicacionservicios.ServicioTecnicoActivity
 import com.example.aplicacionservicios.entidad.Servicio
 import com.example.aplicacionservicios.utils.appConfig
 
-class ServicioAdapter(var data:ArrayList<Servicio>): RecyclerView.Adapter<ViewServicio>() {
+class ServicioAdapter(private var originalData: ArrayList<Servicio>,
+                      private val itemClickListener: OnServicioItemClickListener?=null
+): RecyclerView.Adapter<ViewServicio>(), Filterable {
+    interface OnServicioItemClickListener {
+        fun onServicioItemClick(servicio: Servicio)
+    }
+
+    private var filteredData: ArrayList<Servicio> = originalData
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewServicio {
@@ -27,19 +37,19 @@ class ServicioAdapter(var data:ArrayList<Servicio>): RecyclerView.Adapter<ViewSe
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return filteredData.size
     }
 
     //2
     override fun onBindViewHolder(holder: ViewServicio, position: Int) {
-        holder.tvServicio.text = data.get(position).nombre
+        holder.tvServicio.text = filteredData[position].nombre
 
         //contexto de ViewDocente
         var contexto: Context = holder.itemView.context
         //identificador para la IMG
         var IMG = -1
         IMG = contexto.resources.getIdentifier(
-            data.get(position).foto,
+            filteredData[position].foto,
             "drawable",
             contexto.packageName
         )
@@ -54,7 +64,8 @@ class ServicioAdapter(var data:ArrayList<Servicio>): RecyclerView.Adapter<ViewSe
         }*/
 
         holder.itemView.setOnClickListener {
-            val servicio = data.get(position)
+            val servicio = filteredData[position]
+            this.itemClickListener?.onServicioItemClick(servicio)
 
             var intent: Intent? = null
 
@@ -107,7 +118,37 @@ class ServicioAdapter(var data:ArrayList<Servicio>): RecyclerView.Adapter<ViewSe
         }
     }
 
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val filterResults = FilterResults()
+                val queryString = constraint?.toString()?.lowercase()
+
+                if (queryString.isNullOrEmpty()) {
+                    filteredData = originalData
+                } else {
+                    val filteredList = ArrayList<Servicio>()
+                    for (servicio in originalData) {
+                        if (servicio.nombre.lowercase().contains(queryString)) {
+                            filteredList.add(servicio)
+                        }
+                    }
+                    filteredData = filteredList
+                }
+
+                filterResults.values = filteredData
+                return filterResults
+            }
+
+            @Suppress("UNCHECKED_CAST")
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                filteredData = results?.values as ArrayList<Servicio>? ?: ArrayList()
+                notifyDataSetChanged()
+            }
+        }
+    }
 }
+
 
 
 private fun Intent.putExtra(s: String, get: Servicio) {

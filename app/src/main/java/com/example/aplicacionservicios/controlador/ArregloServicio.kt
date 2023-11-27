@@ -61,11 +61,11 @@ class ArregloServicio {
         //crear objeto de la clase ContentValues
         var row= ContentValues()
         //claves
-        row.put("nomb",bean.nombre)
+        row.put("nom",bean.nombre)
         row.put("foto",bean.foto)
-        row.put("codTrab",bean.codigoTrabajador)
+        row.put("cod_trabajador",bean.codigoTrabajador)
         //invocar al método insert
-        salida=cn.insert("tb_servicio","cod",row).toInt()
+        salida=cn.insert("tb_servicio","cod_servicio",row).toInt()
         return salida
     }
     fun actualizar(bean:Servicio):Int{
@@ -75,12 +75,12 @@ class ArregloServicio {
         //crear objeto de la clase ContentValues
         var row= ContentValues()
         //claves
-        row.put("cod",bean.codigo)
-        row.put("nomb",bean.nombre)
+        row.put("cod_servicio",bean.codigo)
+        row.put("nom",bean.nombre)
         row.put("foto",bean.foto)
-        row.put("codTrab",bean.codigoTrabajador)
+        row.put("cod_trabajador",bean.codigoTrabajador)
         //invocar al método update
-        salida=cn.update("tb_servicio",row,"cod=?",
+        salida=cn.update("tb_servicio",row,"cod_servicio=?",
             arrayOf(bean.codigo.toString()))
         return salida
     }
@@ -89,7 +89,7 @@ class ArregloServicio {
         //abrir acceso a la base de datos en modo escritura
         var cn=appConfig.BD.writableDatabase
         //invocar al método update
-        salida=cn.delete("tb_servicio","cod=?",
+        salida=cn.delete("tb_servicio","cod_servicio=?",
             arrayOf(cod.toString()))
         return salida
     }

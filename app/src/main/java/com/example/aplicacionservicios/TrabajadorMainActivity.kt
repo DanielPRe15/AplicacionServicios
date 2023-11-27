@@ -12,12 +12,15 @@ import com.example.aplicacionservicios.controlador.ArregloTrabajador
 class TrabajadorMainActivity: AppCompatActivity() {
     private lateinit var rvTrabajador: RecyclerView
     private lateinit var btnTrabNuevo: Button
+    private lateinit var btnTrabSalir2: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.trabajador_main)
         rvTrabajador=findViewById(R.id.rvTrabajador)
         btnTrabNuevo=findViewById(R.id.btnTrabNuevo)
+        btnTrabSalir2=findViewById(R.id.btnTrabSalir2)
         btnTrabNuevo.setOnClickListener {nuevo()}
+        btnTrabSalir2.setOnClickListener {salir()}
 
         //invocar al método listado
         var datos=ArregloTrabajador().listado()
@@ -28,6 +31,10 @@ class TrabajadorMainActivity: AppCompatActivity() {
         //rvDocentes.layoutManager=GridLayoutManager(this,3)
         //mostrar el valor del objeto adaptador al atributo rvDocentes
         rvTrabajador.adapter=adaptador
+    }
+    fun salir(){
+        val intent= Intent(this,PrincipalAdminActivity::class.java)
+        startActivity(intent)
     }
     fun nuevo(){
         val intent= Intent(this,TrabajadorNuevoActivity::class.java)

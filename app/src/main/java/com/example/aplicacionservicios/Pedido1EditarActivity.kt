@@ -39,6 +39,7 @@ class Pedido1EditarActivity: AppCompatActivity(), AdapterView.OnItemClickListene
     private lateinit var  btnPed1Eliminar: Button
     private lateinit var  btnPed1Salir: Button
 
+    var fechaVariable = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pedido1_editar)
@@ -58,11 +59,14 @@ class Pedido1EditarActivity: AppCompatActivity(), AdapterView.OnItemClickListene
         btnPed1Eliminar.setOnClickListener {eliminar()}
         btnPed1Salir.setOnClickListener {salir()}
         obtenerDatos()
+
+
     }
     fun actualizar(){
         //variables
         var cli="";var telef="";var fech="";var dire="";var info="";var cod1:Int;
         var cod2:Int ;var cod3:Int;
+
         //leer cajas
         cod1=txtPed1Codigo.text.toString().toInt()
         cod2=txtPed1CodigoServicio.text.toString().toInt()
@@ -73,6 +77,8 @@ class Pedido1EditarActivity: AppCompatActivity(), AdapterView.OnItemClickListene
         dire= txtPed1Direccion.text.toString()
         info=txtPed1Info.text.toString()
 
+        if (fech == null)
+        {  fech = fechaVariable}
 
         var dateFormat = SimpleDateFormat("dd/MM/yyyy")
         var date: Date? = null
@@ -86,6 +92,16 @@ class Pedido1EditarActivity: AppCompatActivity(), AdapterView.OnItemClickListene
         }
 
 
+        if (date == null)
+        {  fech = fechaVariable
+            try {
+                date = dateFormat.parse(fech)
+            } catch (e: ParseException) {
+                e.printStackTrace()
+                Toast.makeText(this, "Error en el formato de fecha", Toast.LENGTH_LONG).show()
+            }
+        }
+
         var ped1=ServicioTecnico(cod1,cod2,cod3,cli,telef,date,dire,info)
         //invocar al método actualizar
         var estado=ArregloServicioTecnico().actualizar(ped1)
@@ -98,7 +114,7 @@ class Pedido1EditarActivity: AppCompatActivity(), AdapterView.OnItemClickListene
     fun eliminar(){
         val dialogo1: AlertDialog.Builder = AlertDialog.Builder(this)
         dialogo1.setTitle("Sistema")
-        dialogo1.setMessage("¿ Seguro de calcular?")
+        dialogo1.setMessage("¿ Seguro de eliminar?")
         dialogo1.setCancelable(false)
         dialogo1.setPositiveButton("Aceptar",
             DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
@@ -134,6 +150,7 @@ class Pedido1EditarActivity: AppCompatActivity(), AdapterView.OnItemClickListene
         txtPed1Fecha.setText(fechaString)
         txtPed1Direccion.setText(bundle.direccionCliente)
         txtPed1Info.setText(bundle.informacionAdicional)
+        fechaVariable = fechaString
     }
 
 

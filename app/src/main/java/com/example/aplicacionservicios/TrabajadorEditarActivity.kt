@@ -67,7 +67,7 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
     fun eliminar(){
         val dialogo1: AlertDialog.Builder = AlertDialog.Builder(this)
         dialogo1.setTitle("Sistema")
-        dialogo1.setMessage("¿ Seguro de calcular?")
+        dialogo1.setMessage("¿ Seguro de eliminar?")
         dialogo1.setCancelable(false)
         dialogo1.setPositiveButton("Aceptar",
             DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
@@ -84,6 +84,7 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
             DialogInterface.OnClickListener { dialogo1, id -> })
         dialogo1.setIcon(android.R.drawable.ic_dialog_alert)
         dialogo1.show()
+        salir()
     }
     fun salir(){
         var intent= Intent(this,TrabajadorMainActivity::class.java)
