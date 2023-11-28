@@ -14,15 +14,108 @@
             android:layout_height="wrap_content"
             android:text="Salir" />
 
-        <Button
-            android:id="@+id/btnPed1Nuevo"
+        <TextView
+            android:id="@+id/textView14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nuevo" />
+            android:text="Pedidos de Servicio Técnico"
+            android:textAlignment="center"
+            android:textColorHighlight="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPedido1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="82dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pedidos de Servicio de Plomeria"
+            android:textAlignment="center"
+            android:textColorHighlight="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPedido2"
+            android:layout_width="match_parent"
+            android:layout_height="88dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pedidos de Servicio Mecánico"
+            android:textAlignment="center"
+            android:textColorHighlight="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPedido3"
+            android:layout_width="match_parent"
+            android:layout_height="83dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pedidos de Servicio de Limpieza"
+            android:textAlignment="center"
+            android:textColorHighlight="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPedido4"
+            android:layout_width="match_parent"
+            android:layout_height="77dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pedidos de Servicio de Enfermería"
+            android:textAlignment="center"
+            android:textColorHighlight="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPedido5"
+            android:layout_width="match_parent"
+            android:layout_height="74dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pedidos de Servicio Eléctrico"
+            android:textAlignment="center"
+            android:textColorHighlight="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPedido6"
+            android:layout_width="match_parent"
+            android:layout_height="78dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
