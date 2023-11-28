@@ -1,121 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent" >
 
-        <Button
-            android:id="@+id/btnPed1MainSalir"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Salir" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pedidos de Servicio Técnico"
-            android:textAlignment="center"
-            android:textColorHighlight="#000000"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            <Button
+                android:id="@+id/btnPed1MainSalir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Salir" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPedido1"
-            android:layout_width="match_parent"
-            android:layout_height="82dp">
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#968FD1"
+                android:text="Pedidos de Servicio Técnico"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textColorLink="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPedido1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CDCDCD"
+                android:foregroundTint="#000000"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp">
 
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pedidos de Servicio de Plomeria"
-            android:textAlignment="center"
-            android:textColorHighlight="#000000"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            </androidx.recyclerview.widget.RecyclerView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPedido2"
-            android:layout_width="match_parent"
-            android:layout_height="88dp">
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#8FCFD1"
+                android:text="Pedidos de Servicio de Plomeria"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textColorLink="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPedido2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CDCDCD"
+                android:foregroundTint="#000000"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp">
 
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pedidos de Servicio Mecánico"
-            android:textAlignment="center"
-            android:textColorHighlight="#000000"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            </androidx.recyclerview.widget.RecyclerView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPedido3"
-            android:layout_width="match_parent"
-            android:layout_height="83dp">
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D1998F"
+                android:text="Pedidos de Servicio Mecánico"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textColorLink="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPedido3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CDCDCD"
+                android:foregroundTint="#000000"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp">
 
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pedidos de Servicio de Limpieza"
-            android:textAlignment="center"
-            android:textColorHighlight="#000000"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            </androidx.recyclerview.widget.RecyclerView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPedido4"
-            android:layout_width="match_parent"
-            android:layout_height="77dp">
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#96D18F"
+                android:text="Pedidos de Servicio de Limpieza"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textColorLink="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPedido4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CDCDCD"
+                android:foregroundTint="#000000"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp">
 
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pedidos de Servicio de Enfermería"
-            android:textAlignment="center"
-            android:textColorHighlight="#000000"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            </androidx.recyclerview.widget.RecyclerView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPedido5"
-            android:layout_width="match_parent"
-            android:layout_height="74dp">
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#C78FD1"
+                android:text="Pedidos de Servicio de Enfermería"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textColorLink="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPedido5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CDCDCD"
+                android:foregroundTint="#000000"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp">
 
-        <TextView
-            android:id="@+id/textView24"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pedidos de Servicio Eléctrico"
-            android:textAlignment="center"
-            android:textColorHighlight="#000000"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#8FA7D1"
+                android:text="Pedidos de Servicio Eléctrico"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textColorLink="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPedido6"
-            android:layout_width="match_parent"
-            android:layout_height="78dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPedido6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CDCDCD"
+                android:foregroundTint="#000000"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
 
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

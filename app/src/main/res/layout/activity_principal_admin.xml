@@ -37,46 +37,7 @@
                 android:textAlignment="center"
                 android:textSize="40dp" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="302dp"
-                android:layout_height="109dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="50dp"
-                app:cardElevation="20dp">
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="96dp"
-                    android:layout_height="89dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:foreground="@drawable/cliente"
-                    tools:srcCompat="@drawable/cliente" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="150dp"
-                    android:layout_marginTop="25dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="CLIENTES"
-                    android:textSize="20dp" />
-
-                <Button
-                    android:id="@+id/btnClientes"
-                    android:layout_width="70dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="215dp"
-                    android:layout_marginTop="65dp"
-                    android:onClick="Clientes"
-                    android:text="VER"
-                    android:textAlignment="center"
-                    android:textSize="9dp"
-                    android:textStyle="bold"
-                    app:cornerRadius="8dp"
-                    app:iconSize="18dp" />
-            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="302dp"

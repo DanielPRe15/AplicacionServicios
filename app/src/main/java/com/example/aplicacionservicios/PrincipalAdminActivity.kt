@@ -28,12 +28,12 @@ class PrincipalAdminActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().signOut()
         startActivity(Intent(this,MainActivity ::class.java))
     }
-
+/*
     fun cliente()
     {
         //Aqui pones la clase a la cual el boton va a dirigir
         //startActivity(Intent(this,MainActivity ::class.java)) ** con eso **
-    }
+    }*/
     fun trabajadores(view: View)
     {
         startActivity(Intent(this,TrabajadorMainActivity ::class.java))
