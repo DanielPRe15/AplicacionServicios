@@ -19,7 +19,7 @@ class ArregloServicioTecnico {
         var row = ContentValues()
 
         // Convertir la fecha a una cadena de texto formateada
-        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss") // Formato de fecha deseado
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH) // Formato de fecha deseado
         val fechaFormateada = sdf.format(bean.fecha)
 
         //claves
@@ -77,27 +77,28 @@ class ArregloServicioTecnico {
         // Aquí debes implementar la lógica para convertir la cadena a un objeto Date
         // Puedes utilizar SimpleDateFormat u otras clases de java.time si estás usando Java 8 o superior.
         // Ejemplo con SimpleDateFormat:
-        val formato = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
+        val formato = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
         return formato.parse(fechaString) ?: Date()
     }
 
-    fun actualizar(bean:ServicioTecnico):Int{
-        var salida=-1
-        var cn=appConfig.BD.writableDatabase
-        var row= ContentValues()
-        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss") // Formato de fecha deseado
-        val fechaFormateada = sdf.format(bean.fecha)
+    fun actualizar(bean: ServicioTecnico): Int {
+        var salida = -1
+        var cn = appConfig.BD.writableDatabase
+        var row = ContentValues()
 
-        row.put("cod_servicotec",bean.codigoServicioTec)
-        row.put("cod_servicio",bean.codigoServi)
-        row.put("cod_tiposervicotec",bean.codigoTipo)
-        row.put("nom_cliente",bean.nombreCliente)
-        row.put("telef_cliente",bean.telefonoCliente)
-        row.put("fecha",fechaFormateada)
-        row.put("direc_cliente",bean.direccionCliente)
-        row.put("informacioadi",bean.informacionAdicional)
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH) // Formato de fecha sin la hora
+        val fecha = bean.fecha
 
-        salida=cn.update("tb_serviciotec",row,"cod_servicotec=?",
+        row.put("cod_servicotec", bean.codigoServicioTec)
+        row.put("cod_servicio", bean.codigoServi)
+        row.put("cod_tiposervicotec", bean.codigoTipo)
+        row.put("nom_cliente", bean.nombreCliente)
+        row.put("telef_cliente", bean.telefonoCliente)
+        row.put("fecha", sdf.format(fecha)) // Utilizando el formato sin hora
+        row.put("direc_cliente", bean.direccionCliente)
+        row.put("informacioadi", bean.informacionAdicional)
+
+        salida = cn.update("tb_serviciotec", row, "cod_servicotec=?",
             arrayOf(bean.codigoServicioTec.toString()))
         return salida
     }

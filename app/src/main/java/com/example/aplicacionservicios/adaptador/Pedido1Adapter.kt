@@ -8,9 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionservicios.Pedido1EditarActivity
 import com.example.aplicacionservicios.R
-import com.example.aplicacionservicios.TrabajadorEditarActivity
 import com.example.aplicacionservicios.entidad.ServicioTecnico
-import com.example.aplicacionservicios.entidad.Trabajador
 import com.example.aplicacionservicios.utils.appConfig
 
 class Pedido1Adapter(var data:ArrayList<ServicioTecnico>): RecyclerView.Adapter<ViewPedido1>()  {
@@ -26,6 +24,7 @@ class Pedido1Adapter(var data:ArrayList<ServicioTecnico>): RecyclerView.Adapter<
     override fun onBindViewHolder(holder: ViewPedido1, position: Int) {
         holder.tvPed1Codigo.text=data.get(position).codigoServicioTec.toString()
         holder.tvPed1Cliente.text=data.get(position).nombreCliente
+        //holder.tvPed1TecnicoTipo.text=data.get(position).codigoTipo.toString()
         holder.tvPed1Direccion.text=data.get(position).direccionCliente
         //contexto de ViewDocente
         var contexto: Context =holder.itemView.context

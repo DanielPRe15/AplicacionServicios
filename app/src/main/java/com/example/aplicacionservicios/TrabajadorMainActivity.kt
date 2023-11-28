@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionservicios.adaptador.TrabajadorAdapter
 import com.example.aplicacionservicios.controlador.ArregloTrabajador
@@ -27,8 +27,8 @@ class TrabajadorMainActivity: AppCompatActivity() {
         //crear objeto de la clase DocenteAdapter
         var adaptador=TrabajadorAdapter(datos)
         //estilo tipo fila para visualizar datos en rvDocentes
-        rvTrabajador.layoutManager= LinearLayoutManager(this)
-        //rvDocentes.layoutManager=GridLayoutManager(this,3)
+        //rvTrabajador.layoutManager= LinearLayoutManager(this)
+        rvTrabajador.layoutManager=GridLayoutManager(this,2)
         //mostrar el valor del objeto adaptador al atributo rvDocentes
         rvTrabajador.adapter=adaptador
     }

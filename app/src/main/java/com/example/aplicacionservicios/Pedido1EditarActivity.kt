@@ -6,21 +6,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aplicacionservicios.controlador.ArregloServicioTecnico
-import com.example.aplicacionservicios.controlador.ArregloTrabajador
 import com.example.aplicacionservicios.entidad.ServicioTecnico
-import com.example.aplicacionservicios.entidad.Trabajador
 import com.google.android.material.textfield.TextInputEditText
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
@@ -80,7 +75,7 @@ class Pedido1EditarActivity: AppCompatActivity(), AdapterView.OnItemClickListene
         if (fech == null)
         {  fech = fechaVariable}
 
-        var dateFormat = SimpleDateFormat("dd/MM/yyyy")
+        var dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
         var date: Date? = null
 
 
@@ -138,7 +133,7 @@ class Pedido1EditarActivity: AppCompatActivity(), AdapterView.OnItemClickListene
     }
     fun obtenerDatos(){
         var bundle=intent.getSerializableExtra("servicioTecnico") as ServicioTecnico
-        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss") // Formato de fecha deseado
+        val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH) // Formato de fecha deseado
         val fechaString = sdf.format(bundle.fecha)
 
         //mostrar en los controles el valor de bundle
