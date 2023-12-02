@@ -21,7 +21,7 @@
 
             <ImageView
                 android:id="@+id/imgTrabFoto"
-                android:layout_width="120dp"
+                android:layout_width="110dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:padding="20dp"

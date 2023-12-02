@@ -1,31 +1,17 @@
 package com.example.aplicacionservicios
 
-import android.app.DatePickerDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aplicacionservicios.controlador.ArregloServicio
-import com.example.aplicacionservicios.controlador.ArregloServicioTecnico
-import com.example.aplicacionservicios.controlador.ArregloTrabajador
 import com.example.aplicacionservicios.entidad.Servicio
-import com.example.aplicacionservicios.entidad.ServicioTecnico
-import com.example.aplicacionservicios.entidad.Trabajador
 import com.google.android.material.textfield.TextInputEditText
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.util.Calendar
-import java.util.Date
-import java.util.Locale
 
 
 class ServicioBaseEditarActivity: AppCompatActivity(), AdapterView.OnItemClickListener  {
@@ -90,12 +76,13 @@ class ServicioBaseEditarActivity: AppCompatActivity(), AdapterView.OnItemClickLi
                     Toast.makeText(this,"Servicio eliminado", Toast.LENGTH_LONG).show()
                 else
                     Toast.makeText(this,"Error en la eliminación", Toast.LENGTH_LONG).show()
+                salir()
             })
         dialogo1.setNegativeButton("Cancelar",
             DialogInterface.OnClickListener { dialogo1, id -> })
         dialogo1.setIcon(android.R.drawable.ic_dialog_alert)
         dialogo1.show()
-        salir()
+
     }
     fun salir(){
         var intent= Intent(this,ServicioBaseMainActivity::class.java)

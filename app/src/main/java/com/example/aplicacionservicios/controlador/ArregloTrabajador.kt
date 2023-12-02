@@ -23,6 +23,19 @@ class ArregloTrabajador {
         }
         return data
     }
+
+    fun listadoTrabajador(): ArrayList<String>{
+        var data = ArrayList<String>()
+        var cn: SQLiteDatabase = appConfig.BD.readableDatabase
+        var SQL = "select *from tb_trabajador"
+        var rs = cn.rawQuery(SQL, null)
+        while (rs.moveToNext()) {
+            var bean = rs.getString(1)
+
+            data.add(bean)
+        }
+        return data
+    }
     fun adicionar(bean:Trabajador):Int{
         var salida=-1
         //abrir acceso a la base de datos en modo escritura

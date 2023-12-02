@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
+
     <LinearLayout
         android:layout_width="409dp"
         android:layout_height="729dp"
@@ -33,29 +36,49 @@
                 android:hint="Nombre del Servicio" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtServBaseCodigoTrabajadorNew"
-                android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/menu"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+
+            android:hint="[Selecciona Servicio]">
+
+            <AutoCompleteTextView
+                android:id="@+id/atvTrabajador"
+                android:layout_width="339dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Codigo del trabajador"  />
+                android:layout_marginLeft="15dp"
+                android:inputType="none"
+                android:textSize="16sp" />
+
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtServBaseFotoNew"
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="128dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/s1" />
+
+            <Button
+                android:id="@+id/btnSeleccionarImagen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Codigo de foto"  />
+                android:text="AGREGAR IAMAGEN" />
+
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout

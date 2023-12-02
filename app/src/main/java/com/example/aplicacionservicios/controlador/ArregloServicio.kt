@@ -1,10 +1,8 @@
 package com.example.aplicacionservicios.controlador
 
 import android.content.ContentValues
-import android.database.sqlite.SQLiteDatabase
 import android.database.Cursor
-import android.widget.Toast
-import com.example.aplicacionservicios.base.InitBD
+import android.database.sqlite.SQLiteDatabase
 import com.example.aplicacionservicios.entidad.Servicio
 import com.example.aplicacionservicios.utils.appConfig
 
@@ -96,19 +94,4 @@ class ArregloServicio {
 
 
 
-
-
-
-
-
-
-
 }
-
-
-   /* fun listado():ArrayList<Servicio>{
-        var data=ArrayList<Servicio>()
-            data.add(Servicio('Servicio Tecnico','s1'))
-            data.add(Servicio('Plomeria','s2'))
-            return  data
-    }*/

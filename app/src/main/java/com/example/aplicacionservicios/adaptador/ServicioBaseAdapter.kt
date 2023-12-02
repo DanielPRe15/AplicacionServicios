@@ -2,17 +2,15 @@ package com.example.aplicacionservicios.adaptador
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aplicacionservicios.Pedido1EditarActivity
+import com.bumptech.glide.Glide
 import com.example.aplicacionservicios.R
 import com.example.aplicacionservicios.ServicioBaseEditarActivity
-import com.example.aplicacionservicios.TrabajadorEditarActivity
 import com.example.aplicacionservicios.entidad.Servicio
-import com.example.aplicacionservicios.entidad.ServicioTecnico
-import com.example.aplicacionservicios.entidad.Trabajador
 import com.example.aplicacionservicios.utils.appConfig
 
 class ServicioBaseAdapter(var data:ArrayList<Servicio>): RecyclerView.Adapter<ViewServicioBase>()  {
@@ -26,18 +24,38 @@ class ServicioBaseAdapter(var data:ArrayList<Servicio>): RecyclerView.Adapter<Vi
     }
     //2
     override fun onBindViewHolder(holder: ViewServicioBase, position: Int) {
-        holder.tvServBaseCodi.text=data.get(position).codigo.toString()
-        holder.tvServBaseNomb.text=data.get(position).nombre
+        holder.tvServBaseCodi.text=data[position].codigo.toString()
+        holder.tvServBaseNomb.text=data[position].nombre
 
+        val servicio = data[position]
         var contexto: Context =holder.itemView.context
+        val rutaImagen = servicio.foto
 
-        var IMG=-1
-        IMG=contexto.resources.getIdentifier(data.get(position).foto,"drawable",contexto.packageName)
-        holder.imgServBaseFoto.setImageResource(IMG)
+        if (rutaImagen.startsWith("content://")) {
+            try {
+                Glide.with(contexto)
+                    .load(Uri.parse(rutaImagen))
+                    .placeholder(R.drawable.cancelar)
+                    .error(R.drawable.cancelar)
+                    .into(holder.imgServBaseFoto)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                holder.imgServBaseFoto.setImageResource(R.drawable.cancelar)
+            }
+        } else {
+            val resourceID =
+                contexto.resources.getIdentifier(rutaImagen, "drawable", contexto.packageName)
+            Glide.with(contexto)
+                .load(resourceID)
+                .placeholder(R.drawable.cancelar)
+                .error(R.drawable.cancelar)
+                .into(holder.imgServBaseFoto)
+        }
+
         //contexto de ViewDocente
         holder.itemView.setOnClickListener{
             var intent = Intent(appConfig.CONTEXT, ServicioBaseEditarActivity::class.java)
-            intent.putExtra("servicio",data.get(position))
+            intent.putExtra("servicio",data[position])
             ContextCompat.startActivity(appConfig.CONTEXT, intent, null)
         }
     }

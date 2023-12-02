@@ -5,8 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -79,12 +77,13 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
                     Toast.makeText(this,"Trabajador eliminado", Toast.LENGTH_LONG).show()
                 else
                     Toast.makeText(this,"Error en la eliminación", Toast.LENGTH_LONG).show()
+                salir()
             })
         dialogo1.setNegativeButton("Cancelar",
             DialogInterface.OnClickListener { dialogo1, id -> })
         dialogo1.setIcon(android.R.drawable.ic_dialog_alert)
         dialogo1.show()
-        salir()
+
     }
     fun salir(){
         var intent= Intent(this,TrabajadorMainActivity::class.java)

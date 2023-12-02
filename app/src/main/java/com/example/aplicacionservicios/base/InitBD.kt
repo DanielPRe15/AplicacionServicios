@@ -163,7 +163,7 @@ class InitBD:SQLiteOpenHelper(appConfig.CONTEXT,
                     "cod_servicio integer primary key autoincrement," +
                     "nom varchar(50)," +
                     "cod_trabajador int references tb_trabajador," +
-                    "foto varchar(3))")
+                    "foto varchar(255))")
 
 
 
@@ -187,7 +187,7 @@ class InitBD:SQLiteOpenHelper(appConfig.CONTEXT,
                     "apell varchar(50)," +
                     "telefono varchar(12)," +
                     "edad int," +
-                    "foto varchar(3))")
+                    "foto varchar(255))")
 
         //Ingresar registros a la tabla:
         bd.execSQL("insert into tb_Trabajador values(null, 'Juan', 'Vasques', '999111555','43','s1')")
