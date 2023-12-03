@@ -103,7 +103,7 @@ class ServicioBaseNuevoActivity: AppCompatActivity(), AdapterView.OnItemClickLis
             val estado = ArregloServicio().adicionar(serv)
 
             if (estado > 0) {
-                Toast.makeText(this, "Trabajador registrado", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Servicio registrado", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(this, "Error en el registro", Toast.LENGTH_LONG).show()
             }
