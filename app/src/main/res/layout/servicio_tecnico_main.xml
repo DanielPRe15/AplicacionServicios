@@ -41,6 +41,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="vertical"
                 android:padding="20dp">
 
@@ -65,9 +66,9 @@
 
                     <AutoCompleteTextView
                         android:id="@+id/atvTecnServicio"
-                        android:layout_width="339dp"
+                        android:layout_width="312dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:inputType="none"
                         android:textSize="16sp" />
 
@@ -92,9 +93,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtTecnCliente"
-                        android:layout_width="339dp"
+                        android:layout_width="310dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -118,9 +119,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtTecnTelefono"
-                        android:layout_width="339dp"
+                        android:layout_width="310dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -144,12 +145,12 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtTecnFecha"
-                        android:layout_width="339dp"
+                        android:layout_width="309dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:focusable="false"
-                    android:textSize="16sp"
-                    android:onClick="showDatePickerDialog" />
+                        android:onClick="showDatePickerDialog"
+                        android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -172,9 +173,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtTecnDireccion"
-                        android:layout_width="339dp"
+                        android:layout_width="308dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -198,9 +199,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtTecnInformacion"
-                        android:layout_width="339dp"
+                        android:layout_width="310dp"
                         android:layout_height="70dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>

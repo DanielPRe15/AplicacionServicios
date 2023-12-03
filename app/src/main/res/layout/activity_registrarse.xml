@@ -6,8 +6,8 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="410dp"
+        android:layout_height="845dp"
         android:background="@drawable/fondoayudafast"
         android:orientation="vertical"
         android:padding="40dp"
@@ -26,6 +26,7 @@
             android:id="@+id/imageView9"
             android:layout_width="match_parent"
             android:layout_height="204dp"
+            android:layout_marginTop="50dp"
             app:srcCompat="@drawable/usuario" />
 
         <com.google.android.material.textfield.TextInputLayout

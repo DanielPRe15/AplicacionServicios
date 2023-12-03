@@ -35,11 +35,12 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="539dp">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="vertical"
                 android:padding="20dp">
 
@@ -63,9 +64,9 @@
 
                     <AutoCompleteTextView
                         android:id="@+id/atvServicio"
-                        android:layout_width="339dp"
+                        android:layout_width="312dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:inputType="none"
                         android:textSize="16sp" />
 
@@ -90,9 +91,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtCliente"
-                        android:layout_width="339dp"
+                        android:layout_width="312dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -116,9 +117,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtTelefono"
-                        android:layout_width="339dp"
+                        android:layout_width="312dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -142,12 +143,12 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtFecha"
-                        android:layout_width="339dp"
+                        android:layout_width="312dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:focusable="false"
-                        android:textSize="16sp"
-                        android:onClick="showDatePickerDialog" />
+                        android:onClick="showDatePickerDialog"
+                        android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -170,9 +171,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtDireccion"
-                        android:layout_width="339dp"
+                        android:layout_width="312dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -196,15 +197,12 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtInformacion"
-                        android:layout_width="339dp"
+                        android:layout_width="312dp"
                         android:layout_height="70dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
-
-
 
 
                 <LinearLayout
@@ -241,8 +239,6 @@
                         app:icon="@drawable/flecha"
                         app:iconGravity="end" />
                 </LinearLayout>
-
-
 
 
             </LinearLayout>

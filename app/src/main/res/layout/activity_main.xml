@@ -6,11 +6,11 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="410dp"
+        android:layout_height="845dp"
+        android:background="@drawable/fondoayudafast"
         android:orientation="vertical"
         android:padding="40dp"
-        android:background="@drawable/fondoayudafast"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
@@ -19,14 +19,15 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:indeterminate="true"/>
+            android:indeterminate="true"
+            android:visibility="gone" />
 
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="330dp"
             android:layout_height="280dp"
+            android:layout_marginTop="50dp"
             app:srcCompat="@drawable/logo3"
             tools:layout_editor_absoluteX="0dp" />
 
@@ -41,8 +42,8 @@
                 android:id="@+id/txtUsuario"
                 android:layout_width="309dp"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
                 android:layout_marginLeft="15dp"
+                android:inputType="textEmailAddress"
                 android:textSize="16sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -51,17 +52,17 @@
             android:id="@+id/outlinedTextField4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true"
             android:layout_marginBottom="15dp"
-            android:hint="Ingrese Contraseña">
+            android:hint="Ingrese Contraseña"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtContrasena"
                 android:layout_width="308dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:textSize="16sp"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:textSize="16sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,7 +94,6 @@
             android:layout_marginTop="20dp"
             android:onClick="register"
             android:text="No tienes cuenta? Registrate" />
-
 
 
     </LinearLayout>
