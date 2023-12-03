@@ -31,6 +31,21 @@ class ArregloServicio {
         return data
     }
 
+    fun listadoServicio(): ArrayList<String>{
+        var data = ArrayList<String>()
+        var cn: SQLiteDatabase = appConfig.BD.readableDatabase
+        var SQL = "select *from tb_servicio"
+        var rs = cn.rawQuery(SQL, null)
+        while (rs.moveToNext()) {
+            var bean = rs.getString(1)
+
+            data.add(bean)
+        }
+        return data
+    }
+
+
+
     fun obtenerCodigoServicio(nombreServicio: String): Int {
         var codigoServicio = -1 // Valor por defecto si no se encuentra el servicio
 

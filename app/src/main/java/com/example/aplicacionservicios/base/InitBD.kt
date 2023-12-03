@@ -185,17 +185,18 @@ class InitBD:SQLiteOpenHelper(appConfig.CONTEXT,
                     "cod_trabajador integer primary key autoincrement," +
                     "nomb varchar(50)," +
                     "apell varchar(50)," +
+                    "cod_servicio int references tb_servicio," +
                     "telefono varchar(12)," +
                     "edad int," +
                     "foto varchar(255))")
 
         //Ingresar registros a la tabla:
-        bd.execSQL("insert into tb_Trabajador values(null, 'Juan', 'Vasques', '999111555','43','s1')")
-        bd.execSQL("insert into tb_Trabajador values(null, 'Jose', 'Perez', '933558710','34','s2')")
-        bd.execSQL("insert into tb_Trabajador values(null, 'Ricardo', 'Quispe', '935487629','25','s3')")
-        bd.execSQL("insert into tb_Trabajador values(null, 'Daniel', 'Mamani', '957486157','59','s4')")
-        bd.execSQL("insert into tb_Trabajador values(null, 'Jorge', 'Vasques', '925468739','48','s5')")
-        bd.execSQL("insert into tb_Trabajador values(null, 'Brandon', 'Cortez', '958763541','38','s6')")
+        bd.execSQL("insert into tb_Trabajador values(null, 'Juan', 'Vasques','1', '999111555','43','s1')")
+        bd.execSQL("insert into tb_Trabajador values(null, 'Jose', 'Perez','2', '933558710','34','s2')")
+        bd.execSQL("insert into tb_Trabajador values(null, 'Ricardo', 'Quispe','3', '935487629','25','s3')")
+        bd.execSQL("insert into tb_Trabajador values(null, 'Daniel', 'Mamani','4', '957486157','59','s4')")
+        bd.execSQL("insert into tb_Trabajador values(null, 'Jorge', 'Vasques','5', '925468739','48','s5')")
+        bd.execSQL("insert into tb_Trabajador values(null, 'Brandon', 'Cortez','6', '958763541','38','s6')")
 
 
     }

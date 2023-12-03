@@ -8,11 +8,14 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.aplicacionservicios.controlador.ArregloServicio
 import com.example.aplicacionservicios.controlador.ArregloTrabajador
 import com.example.aplicacionservicios.entidad.Trabajador
 import com.google.android.material.textfield.TextInputEditText
@@ -34,14 +37,18 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
     private lateinit var  txtTrabCodigo: TextInputEditText
     private lateinit var  txtTrabNombre: TextInputEditText
     private lateinit var  txtTrabApellido: TextInputEditText
+    private lateinit var atvServicio: AutoCompleteTextView
     private lateinit var  txtTrabTelefono: TextInputEditText
     private lateinit var  txtTrabEdad: TextInputEditText
 
-   // private lateinit var  txtTrabFoto: TextInputEditText
+
+    // private lateinit var  txtTrabFoto: TextInputEditText
     private lateinit var  btnTrabActualizar: Button
     private lateinit var  btnTrabEliminar: Button
     private lateinit var  btnTrabSalir: Button
     private lateinit var  btnSeleccionarImagen: Button
+    private lateinit var data: List<String>
+    var posServicio=-1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +58,7 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
         txtTrabCodigo=findViewById(R.id.txtTrabCodigo)
         txtTrabNombre=findViewById(R.id.txtTrabNombre)
         txtTrabApellido=findViewById(R.id.txtTrabApellido)
+        atvServicio=findViewById(R.id.atvServicio)
         txtTrabTelefono=findViewById(R.id.txtTrabTelefono)
         txtTrabEdad=findViewById(R.id.txtTrabEdad)
         //txtTrabFoto=findViewById(R.id.txtTrabFoto)
@@ -59,6 +67,7 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
         btnTrabEliminar=findViewById(R.id.btnTrabEliminar)
         btnTrabSalir=findViewById(R.id.btnTrabSalir)
 
+        atvServicio.setOnItemClickListener(this)
         imageView = findViewById(R.id.imageView)
 
         btnSeleccionarImagen.setOnClickListener { seleccionarImagen() }
@@ -68,8 +77,18 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
         btnTrabSalir.setOnClickListener {salir()}
 
         obtenerDatos()
+        cargarServicio()
     }
 
+
+    fun cargarServicio(){
+        //invocar al método listadoDistritos
+        data= ArregloServicio().listadoServicio()
+        //crear un adaptador con los valores de data
+        var adaptador= ArrayAdapter(this,android.R.layout.simple_list_item_1,data)
+        //enviar el objeto "adaptador" al atributo atvDistrito
+        atvServicio.setAdapter(adaptador)
+    }
 
 
     private fun seleccionarImagen() {
@@ -88,22 +107,31 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
             }
         }
     }
-    fun actualizar(){
-        //variables
-        var nomb=""; var apel=""; var tele=""; var edad=0; var foto:String; var cod:Int
-        //leer cajas
-        cod=txtTrabCodigo.text.toString().toInt()
-        nomb=txtTrabNombre.text.toString()
-        apel=txtTrabApellido.text.toString()
-        tele=txtTrabTelefono.text.toString()
-        edad= txtTrabEdad.text.toString().toInt()
+    fun actualizar() {
+        // Variables
+        var nomb = ""
+        var apel = ""
+        var tele = ""
+        var edad = 0
+        var foto: String
+        var cod = 0 // Declaración de la variable para el código del servicio
 
+        // Leer valores de las cajas de texto
+        cod = txtTrabCodigo.text.toString().toInt()
+        nomb = txtTrabNombre.text.toString()
+        apel = txtTrabApellido.text.toString()
+        tele = txtTrabTelefono.text.toString()
+        edad = txtTrabEdad.text.toString().toInt()
 
+        // Obtener el código del servicio seleccionado (si hay uno)
+        val codigoServicioSeleccionado = posServicio // Utiliza la variable 'posServicio' obtenida del onItemClick
 
-         foto = imageUri?.toString() ?: bundle?.foto ?: ""
+        foto = imageUri?.toString() ?: bundle?.foto ?: ""
 
-        val trab = Trabajador(cod, nomb, apel, tele, edad, foto)
+        // Crear un objeto Trabajador con los datos recopilados
+        val trab = Trabajador(cod, nomb, apel, codigoServicioSeleccionado, tele, edad, foto)
 
+        // Actualizar el trabajador en la base de datos o almacenamiento correspondiente
         val estado = ArregloTrabajador().actualizar(trab)
 
         if (estado > 0) {
@@ -111,7 +139,6 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
         } else {
             Toast.makeText(this, "Error en la actualización", Toast.LENGTH_LONG).show()
         }
-
 
         salir()
     }
@@ -152,6 +179,14 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
             txtTrabTelefono.setText(it.telefono)
             txtTrabEdad.setText(it.edad.toString())
 
+            // Carga los datos del servicio en el AutoCompleteTextView
+            cargarServicio()
+
+            val nombreServicio = obtenerNombreServicio(it.codigoServicio) // Obtener el nombre del servicio
+
+            // Establece el servicio actual del trabajador en el AutoCompleteTextView
+            atvServicio.setText(nombreServicio)
+
             val fotoUrl = it.foto
 
             Log.d("TrabajadorEditar", "URI de la imagen seleccionada: $imageUri") // Verifica la URI en el registro
@@ -170,8 +205,20 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
             }
         }
     }
+
+    fun obtenerNombreServicio(codigoServicio: Int): String {
+        val arregloServicio = ArregloServicio()
+        val listaNombresServicio = arregloServicio.listadoServicio()
+
+        return if (listaNombresServicio.size > codigoServicio - 1) {
+            listaNombresServicio[codigoServicio - 1]
+        } else {
+            "Servicio no encontrado" // Cambiar por el mensaje que desees en caso de no encontrar el servicio
+        }
+    }
+
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        TODO("Not yet implemented")
+        posServicio=p2+1
     }
 
 
