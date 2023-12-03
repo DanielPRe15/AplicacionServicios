@@ -124,6 +124,10 @@
             android:name=".ServicioBaseMainActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".UsuarioMainActivity"
+            android:exported="true">
+        </activity>
 
     </application>
 

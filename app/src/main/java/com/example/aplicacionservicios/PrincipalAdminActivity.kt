@@ -46,6 +46,11 @@ class PrincipalAdminActivity : AppCompatActivity() {
         startActivity(Intent(this,ServicioBaseMainActivity ::class.java))
 
     }
+
+    fun usuarios(view: View){
+        startActivity(Intent(this,UsuarioMainActivity ::class.java))
+
+    }
 /*
     fun eliminar(){
                 var cod1:Int

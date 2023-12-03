@@ -10,166 +10,211 @@
     tools:context=".PrincipalAdminActivity">
 
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_height="match_parent" >
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="118dp"
-            android:layout_height="40dp"
-            android:backgroundTint="#B47C8C"
-            android:onClick="cerrarSesion"
-            android:text="Cerrar Sesión"
-            android:textSize="11dp"
-            app:cornerRadius="8dp" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
-            android:layout_marginTop="30dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="MENU"
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textSize="40dp"
-            android:textStyle="bold" />
-
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="302dp"
-            android:layout_height="109dp"
-            android:layout_marginLeft="30dp"
-            app:cardCornerRadius="10dp"
-            android:layout_marginTop="60dp"
-
-            app:cardElevation="20dp">
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="92dp"
-                android:layout_height="89dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:foreground="@drawable/trabajadores"
-                tools:srcCompat="@drawable/trabajadores" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="125dp"
-                android:layout_marginTop="25dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="TRABAJADORES"
-                android:textSize="20dp" />
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <Button
-                android:id="@+id/btnTrabajadores"
-                android:layout_width="70dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="215dp"
-                android:layout_marginTop="65dp"
-                android:onClick="trabajadores"
-                android:text="VER"
-                android:textAlignment="center"
-                android:textSize="9dp"
-                android:textStyle="bold"
-                app:cornerRadius="8dp"
-                app:iconSize="18dp" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="302dp"
-            android:layout_height="109dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="20dp">
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="91dp"
-                android:layout_height="84dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:foreground="@drawable/entrega"
-                tools:srcCompat="@drawable/entrega" />
+                android:id="@+id/button4"
+                android:layout_width="118dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#B47C8C"
+                android:onClick="cerrarSesion"
+                android:text="Cerrar Sesión"
+                android:textSize="11dp"
+                app:cornerRadius="8dp" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="150dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="30dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="PEDIDOS"
-                android:textSize="20dp" />
-
-            <Button
-                android:id="@+id/btnPedidos"
-                android:layout_width="70dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="215dp"
-                android:layout_marginTop="65dp"
-                android:onClick="pedidos"
-                android:text="VER"
+                android:text="MENU"
                 android:textAlignment="center"
-                android:textSize="9dp"
-                android:textStyle="bold"
-                app:cornerRadius="8dp"
-                app:iconSize="18dp" />
-        </androidx.cardview.widget.CardView>
+                android:textColor="@color/black"
+                android:textSize="40dp"
+                android:textStyle="bold" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="302dp"
-            android:layout_height="109dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="20dp">
 
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="86dp"
-                android:layout_height="82dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:foreground="@drawable/soporte"
-                tools:srcCompat="@drawable/soporte" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="302dp"
+                android:layout_height="109dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="60dp"
+                app:cardCornerRadius="10dp"
 
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="150dp"
-                android:layout_marginTop="25dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="SERVICIOS"
-                android:textSize="20dp" />
+                app:cardElevation="20dp">
 
-            <Button
-                android:id="@+id/btnServicios"
-                android:layout_width="70dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="215dp"
-                android:layout_marginTop="65dp"
-                android:onClick="servicios"
-                android:text="VER"
-                android:textAlignment="center"
-                android:textSize="9dp"
-                android:textStyle="bold"
-                app:cornerRadius="8dp"
-                app:iconSize="18dp" />
-        </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="92dp"
+                    android:layout_height="89dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:foreground="@drawable/trabajadores"
+                    tools:srcCompat="@drawable/trabajadores" />
 
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="125dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="TRABAJADORES"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:id="@+id/btnTrabajadores"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="215dp"
+                    android:layout_marginTop="65dp"
+                    android:onClick="trabajadores"
+                    android:text="VER"
+                    android:textAlignment="center"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    app:cornerRadius="8dp"
+                    app:iconSize="18dp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="302dp"
+                android:layout_height="109dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="20dp">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="91dp"
+                    android:layout_height="84dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:foreground="@drawable/entrega"
+                    tools:srcCompat="@drawable/entrega" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="PEDIDOS"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:id="@+id/btnPedidos"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="215dp"
+                    android:layout_marginTop="65dp"
+                    android:onClick="pedidos"
+                    android:text="VER"
+                    android:textAlignment="center"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    app:cornerRadius="8dp"
+                    app:iconSize="18dp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="302dp"
+                android:layout_height="109dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="20dp">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="86dp"
+                    android:layout_height="82dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:foreground="@drawable/soporte"
+                    tools:srcCompat="@drawable/soporte" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="SERVICIOS"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:id="@+id/btnServicios"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="215dp"
+                    android:layout_marginTop="65dp"
+                    android:onClick="servicios"
+                    android:text="VER"
+                    android:textAlignment="center"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    app:cornerRadius="8dp"
+                    app:iconSize="18dp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="302dp"
+                android:layout_height="109dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="20dp">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="86dp"
+                    android:layout_height="82dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:foreground="@drawable/cliente"
+                    tools:srcCompat="@drawable/cliente" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="USUARIOS"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:id="@+id/btnUsuarios"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="215dp"
+                    android:layout_marginTop="65dp"
+                    android:onClick="usuarios"
+                    android:text="VER"
+                    android:textAlignment="center"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    app:cornerRadius="8dp"
+                    app:iconSize="18dp" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
