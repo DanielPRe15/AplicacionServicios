@@ -61,7 +61,7 @@ class TrabajadorAdapter(var data:ArrayList<Trabajador>): RecyclerView.Adapter<Vi
         holder.itemView.setOnClickListener {
             val intent = Intent(appConfig.CONTEXT, TrabajadorEditarActivity::class.java)
             intent.putExtra("trabajador", data[position])
-            ContextCompat.startActivity(appConfig.CONTEXT, intent, null)
+            holder.itemView.context.startActivity(intent)
         }
     }
 }
