@@ -10,6 +10,7 @@ class ViewTrabajador(item: View): RecyclerView.ViewHolder(item)  {
     var tvTrabCodigo: TextView
     var tvTrabNombre: TextView
     var tvTrabApellido: TextView
+    //var tvTrabServicio: TextView
     var tvTrabTelefono: TextView
     var tvTrabEdad: TextView
     var imgTrabFoto: ImageView
@@ -19,6 +20,7 @@ class ViewTrabajador(item: View): RecyclerView.ViewHolder(item)  {
         tvTrabCodigo = item.findViewById(R.id.tvTrabCodigo)
         tvTrabNombre = item.findViewById(R.id.tvTrabNombre)
         tvTrabApellido = item.findViewById(R.id.tvTrabApellido)
+       // tvTrabServicio = item.findViewById(R.id.tvTrabServicio)
         tvTrabTelefono = item.findViewById(R.id.tvTrabTelefono)
         tvTrabEdad = item.findViewById(R.id.tvTrabEdad)
         imgTrabFoto = item.findViewById(R.id.imgTrabFoto)

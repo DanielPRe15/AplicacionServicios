@@ -162,6 +162,7 @@ class InitBD:SQLiteOpenHelper(appConfig.CONTEXT,
 
                     "cod_servicio integer primary key autoincrement," +
                     "nom varchar(50)," +
+                    "cod_trabajador int references tb_trabajador," +
                     "foto varchar(255))")
 
 
@@ -170,36 +171,32 @@ class InitBD:SQLiteOpenHelper(appConfig.CONTEXT,
 
 
         //ingresar 6 servicios
-        bd.execSQL("insert into tb_servicio values(null,'Servicio Tecnico','s1')")
-        bd.execSQL("insert into tb_servicio values(null,'Plomeria','s2')")
-        bd.execSQL("insert into tb_servicio values(null,'Electricista','s3')")
-        bd.execSQL("insert into tb_servicio values(null,'Limpieza del hogar','s4')")
-        bd.execSQL("insert into tb_servicio values(null,'Mecanico','s5')")
-        bd.execSQL("insert into tb_servicio values(null,'Enfermeria','s6')")
+        bd.execSQL("insert into tb_servicio values(null,'Servicio Tecnico','1','s1')")
+        bd.execSQL("insert into tb_servicio values(null,'Plomeria','2','s2')")
+        bd.execSQL("insert into tb_servicio values(null,'Electricista','3','s3')")
+        bd.execSQL("insert into tb_servicio values(null,'Limpieza del hogar','4','s4')")
+        bd.execSQL("insert into tb_servicio values(null,'Mecanico','5','s5')")
+        bd.execSQL("insert into tb_servicio values(null,'Enfermeria','6','s6')")
 
 
         bd.execSQL(
             "create table tb_trabajador" +
                     "(" +
                     "cod_trabajador integer primary key autoincrement," +
-                    "cod_servicio int references tb_servicio," +
                     "nomb varchar(50)," +
                     "apell varchar(50)," +
+                    "cod_servicio int references tb_servicio," +
                     "telefono varchar(12)," +
                     "edad int," +
                     "foto varchar(255))")
 
         //Ingresar registros a la tabla:
-
-        /*
-        *         bd.execSQL("insert into tb_Trabajador values(null, 'Juan', 'Vasques', '999111555','43','s1')")
-        bd.execSQL("insert into tb_Trabajador values(null, 'Jose', 'Perez', '933558710','34','s2')")
-        bd.execSQL("insert into tb_Trabajador values(null, 'Ricardo', 'Quispe', '935487629','25','s3')")
-        bd.execSQL("insert into tb_Trabajador values(null, 'Daniel', 'Mamani', '957486157','59','s4')")
-        bd.execSQL("insert into tb_Trabajador values(null, 'Jorge', 'Vasques', '925468739','48','s5')")
-        bd.execSQL("insert into tb_Trabajador values(null, 'Brandon', 'Cortez', '958763541','38','s6')")
-        * */
-
+        bd.execSQL("insert into tb_Trabajador values(null, 'Juan', 'Vasques','1', '999111555','43','s1')")
+        bd.execSQL("insert into tb_Trabajador values(null, 'Jose', 'Perez','2', '933558710','34','s2')")
+        bd.execSQL("insert into tb_Trabajador values(null, 'Ricardo', 'Quispe','3', '935487629','25','s3')")
+        bd.execSQL("insert into tb_Trabajador values(null, 'Daniel', 'Mamani','4', '957486157','59','s4')")
+        bd.execSQL("insert into tb_Trabajador values(null, 'Jorge', 'Vasques','5', '925468739','48','s5')")
+        bd.execSQL("insert into tb_Trabajador values(null, 'Brandon', 'Cortez','6', '958763541','38','s6')")
 
 
     }

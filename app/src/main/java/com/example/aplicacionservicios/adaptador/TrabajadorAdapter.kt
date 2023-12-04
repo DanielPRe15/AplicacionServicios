@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.aplicacionservicios.R
@@ -30,6 +29,7 @@ class TrabajadorAdapter(var data:ArrayList<Trabajador>): RecyclerView.Adapter<Vi
         holder.tvTrabCodigo.text = data[position].codigo.toString()
         holder.tvTrabNombre.text = data[position].nombre
         holder.tvTrabApellido.text = data[position].apellido
+        //holder.tvTrabServicio.text = data[position].codigoServicio.toString()
         holder.tvTrabTelefono.text = data[position].telefono
         holder.tvTrabEdad.text = data[position].edad.toString()
 
@@ -38,6 +38,7 @@ class TrabajadorAdapter(var data:ArrayList<Trabajador>): RecyclerView.Adapter<Vi
         val trabajador = data[position]
         val contexto: Context = holder.itemView.context
         val rutaImagen = trabajador.foto
+
 
         if (rutaImagen.startsWith("content://")) {
             try {

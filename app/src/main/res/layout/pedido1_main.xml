@@ -3,11 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fondoayudafast">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:layout_margin="10dp" >
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,27 +21,35 @@
                 android:id="@+id/btnPed1MainSalir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Salir" />
+                android:layout_margin="10dp"
+                android:text="SALIR"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#968FD1"
+                android:padding="8dp"
+
                 android:text="Pedidos de Servicio Técnico"
+
+
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textColorHighlight="#000000"
                 android:textColorHint="#000000"
                 android:textColorLink="#000000"
                 android:textSize="20sp"
+                android:layout_margin="10sp"
+
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPedido1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#CDCDCD"
+
                 android:foregroundTint="#000000"
                 android:paddingLeft="5dp"
                 android:paddingTop="5dp"
@@ -54,7 +65,9 @@
                 android:layout_height="wrap_content"
                 android:background="#8FCFD1"
                 android:text="Pedidos de Servicio de Plomeria"
+                android:padding="8dp"
                 android:textAlignment="center"
+                android:layout_margin="10sp"
                 android:textColor="#000000"
                 android:textColorHighlight="#000000"
                 android:textColorHint="#000000"
@@ -66,7 +79,7 @@
                 android:id="@+id/rvPedido2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#CDCDCD"
+
                 android:foregroundTint="#000000"
                 android:paddingLeft="5dp"
                 android:paddingTop="5dp"
@@ -82,6 +95,8 @@
                 android:layout_height="wrap_content"
                 android:background="#D1998F"
                 android:text="Pedidos de Servicio Mecánico"
+                android:padding="8dp"
+                android:layout_margin="10sp"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textColorHighlight="#000000"
@@ -94,7 +109,7 @@
                 android:id="@+id/rvPedido3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#CDCDCD"
+
                 android:foregroundTint="#000000"
                 android:paddingLeft="5dp"
                 android:paddingTop="5dp"
@@ -110,6 +125,8 @@
                 android:layout_height="wrap_content"
                 android:background="#96D18F"
                 android:text="Pedidos de Servicio de Limpieza"
+                android:padding="8dp"
+                android:layout_margin="10sp"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textColorHighlight="#000000"
@@ -122,7 +139,7 @@
                 android:id="@+id/rvPedido4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#CDCDCD"
+
                 android:foregroundTint="#000000"
                 android:paddingLeft="5dp"
                 android:paddingTop="5dp"
@@ -138,6 +155,8 @@
                 android:layout_height="wrap_content"
                 android:background="#C78FD1"
                 android:text="Pedidos de Servicio de Enfermería"
+                android:padding="8dp"
+                android:layout_margin="10sp"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textColorHighlight="#000000"
@@ -150,7 +169,7 @@
                 android:id="@+id/rvPedido5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#CDCDCD"
+
                 android:foregroundTint="#000000"
                 android:paddingLeft="5dp"
                 android:paddingTop="5dp"
@@ -166,6 +185,8 @@
                 android:layout_height="wrap_content"
                 android:background="#8FA7D1"
                 android:text="Pedidos de Servicio Eléctrico"
+                android:padding="8dp"
+                android:layout_margin="10sp"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textColorHighlight="#000000"
@@ -179,7 +200,7 @@
                 android:id="@+id/rvPedido6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#CDCDCD"
+
                 android:foregroundTint="#000000"
                 android:paddingLeft="5dp"
                 android:paddingTop="5dp"

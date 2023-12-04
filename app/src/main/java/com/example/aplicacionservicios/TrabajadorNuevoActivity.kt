@@ -28,30 +28,31 @@ class TrabajadorNuevoActivity: AppCompatActivity(), AdapterView.OnItemClickListe
 
     private lateinit var  txtTrabNombreNew: TextInputEditText
     private lateinit var  txtTrabApellidoNew: TextInputEditText
+    private lateinit var atvServicio: AutoCompleteTextView
     private lateinit var  txtTrabTelefonoNew: TextInputEditText
     private lateinit var  txtTrabEdadNew: TextInputEditText
 
     private lateinit var  btnTrabGrabar: Button
     private lateinit var  btnTrabSalirNew: Button
     private lateinit var  btnSeleccionarImagen: Button
-
-
+    private lateinit var data: List<String>
+    var posServicio=-1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.trabajador_nuevo)
         txtTrabNombreNew=findViewById(R.id.txtTrabNombreNew)
         txtTrabApellidoNew=findViewById(R.id.txtTrabApellidoNew)
+        atvServicio=findViewById(R.id.atvServicio)
         txtTrabTelefonoNew=findViewById(R.id.txtTrabTelefonoNew)
         txtTrabEdadNew=findViewById(R.id.txtTrabEdadNew)
-
 
         btnTrabGrabar=findViewById(R.id.btnTrabGrabar)
         btnSeleccionarImagen=findViewById(R.id.btnSeleccionarImagen)
         btnTrabSalirNew=findViewById(R.id.btnTrabSalirNew)
 
+        atvServicio.setOnItemClickListener(this)
+
         imageView = findViewById(R.id.imageView)
-
-
         //
 
         val btnSeleccionarImagen: Button = findViewById(R.id.btnSeleccionarImagen)
@@ -63,11 +64,16 @@ class TrabajadorNuevoActivity: AppCompatActivity(), AdapterView.OnItemClickListe
         btnTrabGrabar.setOnClickListener {grabar()}
         btnTrabSalirNew.setOnClickListener {salir()}
 
-
-
+        cargarServicio()
     }
-
-
+    fun cargarServicio(){
+        //invocar al método listadoDistritos
+        data= ArregloServicio().listadoServicio()
+        //crear un adaptador con los valores de data
+        var adaptador= ArrayAdapter(this,android.R.layout.simple_list_item_1,data)
+        //enviar el objeto "adaptador" al atributo atvDistrito
+        atvServicio.setAdapter(adaptador)
+    }
 
     private fun seleccionarImagen() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
@@ -88,10 +94,11 @@ class TrabajadorNuevoActivity: AppCompatActivity(), AdapterView.OnItemClickListe
         val tele = txtTrabTelefonoNew.text.toString()
         val edad = txtTrabEdadNew.text.toString().toInt()
 
+
         if (imageUri != null) {
             val foto = imageUri.toString() // Obtener la ruta de la imagen
 
-            val trab = Trabajador(0, nomb, apel, tele, edad, foto)
+            val trab = Trabajador(0, nomb, apel, posServicio, tele, edad, foto)
             val estado = ArregloTrabajador().adicionar(trab)
 
             if (estado > 0) {
@@ -111,7 +118,7 @@ class TrabajadorNuevoActivity: AppCompatActivity(), AdapterView.OnItemClickListe
     }
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-
+        posServicio=p2+1
     }
 
 }

@@ -16,15 +16,14 @@ class ArregloTrabajador {
                 rs.getInt(0),
                 rs.getString(1),
                 rs.getString(2),
-                rs.getString(3),
-                rs.getInt(4),
-                rs.getString(5))
-
+                rs.getInt(3),
+                rs.getString(4),
+                rs.getInt(5),
+                rs.getString(6))
             data.add(bean)
         }
         return data
     }
-
 
     fun listadoTrabajador(): ArrayList<String>{
         var data = ArrayList<String>()
@@ -47,6 +46,7 @@ class ArregloTrabajador {
         //claves
         row.put("nomb",bean.nombre)
         row.put("apell",bean.apellido)
+        row.put("cod_servicio",bean.codigoServicio)
         row.put("telefono",bean.telefono)
         row.put("edad",bean.edad)
         row.put("foto",bean.foto)
@@ -65,6 +65,7 @@ class ArregloTrabajador {
         //claves
         row.put("nomb",bean.nombre)
         row.put("apell",bean.apellido)
+        row.put("cod_servicio",bean.codigoServicio)
         row.put("telefono",bean.telefono)
         row.put("edad",bean.edad)
         row.put("foto",bean.foto)

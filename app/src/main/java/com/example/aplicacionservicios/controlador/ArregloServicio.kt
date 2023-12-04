@@ -23,13 +23,13 @@ class ArregloServicio {
             var bean = Servicio(
                 rs.getInt(0),
                 rs.getString(1),
-                rs.getString(2))
+                rs.getInt(2),
+                rs.getString(3))
             //enviar objeto al arreglo data
             data.add(bean)
         }
         return data
     }
-
 
     fun obtenerCodigoServicio(nombreServicio: String): Int {
         var codigoServicio = -1 // Valor por defecto si no se encuentra el servicio
@@ -61,6 +61,7 @@ class ArregloServicio {
         //claves
         row.put("nom",bean.nombre)
         row.put("foto",bean.foto)
+        row.put("cod_trabajador",bean.codigoTrabajador)
         //invocar al método insert
         salida=cn.insert("tb_servicio","cod_servicio",row).toInt()
         return salida
@@ -75,6 +76,7 @@ class ArregloServicio {
         row.put("cod_servicio",bean.codigo)
         row.put("nom",bean.nombre)
         row.put("foto",bean.foto)
+        row.put("cod_trabajador",bean.codigoTrabajador)
         //invocar al método update
         salida=cn.update("tb_servicio",row,"cod_servicio=?",
             arrayOf(bean.codigo.toString()))

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="140dp"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="15dp"
@@ -11,45 +11,28 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imgServBaseFoto"
-                android:layout_width="100dp"
-                android:layout_height="114dp"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="10dp"
-                app:srcCompat="@drawable/s1" />
-        </LinearLayout>
-
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Código"
+                    android:text="Nombres"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvServBaseCodi"
+                    android:id="@+id/tvUsuarioNombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
@@ -58,16 +41,27 @@
                     android:id="@+id/textView10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nombre"
+                    android:text="Apellidos"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvServBaseNomb"
+                    android:id="@+id/tvUsuarioApellido"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
 
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rol"
+                    android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/tvUsuarioRol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
 
             </LinearLayout>
         </LinearLayout>

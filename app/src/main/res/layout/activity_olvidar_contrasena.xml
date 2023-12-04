@@ -12,7 +12,8 @@
         android:orientation="vertical"
         android:padding="40dp"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        tools:layout_editor_absoluteY="1dp"
+        android:background="@drawable/fondoayudafast">
 
         <ProgressBar
             android:id="@+id/progressBar3"
