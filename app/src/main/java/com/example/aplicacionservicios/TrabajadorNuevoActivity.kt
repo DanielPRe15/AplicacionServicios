@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.aplicacionservicios.controlador.ArregloServicio
 import com.example.aplicacionservicios.controlador.ArregloTrabajador
 import com.example.aplicacionservicios.entidad.Trabajador
 import com.google.android.material.textfield.TextInputEditText
@@ -32,6 +35,7 @@ class TrabajadorNuevoActivity: AppCompatActivity(), AdapterView.OnItemClickListe
     private lateinit var  btnTrabSalirNew: Button
     private lateinit var  btnSeleccionarImagen: Button
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.trabajador_nuevo)
@@ -40,11 +44,14 @@ class TrabajadorNuevoActivity: AppCompatActivity(), AdapterView.OnItemClickListe
         txtTrabTelefonoNew=findViewById(R.id.txtTrabTelefonoNew)
         txtTrabEdadNew=findViewById(R.id.txtTrabEdadNew)
 
+
         btnTrabGrabar=findViewById(R.id.btnTrabGrabar)
         btnSeleccionarImagen=findViewById(R.id.btnSeleccionarImagen)
         btnTrabSalirNew=findViewById(R.id.btnTrabSalirNew)
 
         imageView = findViewById(R.id.imageView)
+
+
         //
 
         val btnSeleccionarImagen: Button = findViewById(R.id.btnSeleccionarImagen)
@@ -55,7 +62,11 @@ class TrabajadorNuevoActivity: AppCompatActivity(), AdapterView.OnItemClickListe
 
         btnTrabGrabar.setOnClickListener {grabar()}
         btnTrabSalirNew.setOnClickListener {salir()}
+
+
+
     }
+
 
 
     private fun seleccionarImagen() {
@@ -100,7 +111,7 @@ class TrabajadorNuevoActivity: AppCompatActivity(), AdapterView.OnItemClickListe
     }
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        TODO("Not yet implemented")
+
     }
 
 }

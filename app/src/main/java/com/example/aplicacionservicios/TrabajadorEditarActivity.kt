@@ -8,6 +8,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -56,6 +57,7 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
         //txtTrabFoto=findViewById(R.id.txtTrabFoto)
         btnTrabActualizar=findViewById(R.id.btnTrabActualizar)
         btnSeleccionarImagen=findViewById(R.id.btnSeleccionarImagen)
+
         btnTrabEliminar=findViewById(R.id.btnTrabEliminar)
         btnTrabSalir=findViewById(R.id.btnTrabSalir)
 
@@ -90,7 +92,7 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
     }
     fun actualizar(){
         //variables
-        var nomb=""; var apel=""; var tele=""; var edad=0; var foto:String; var cod:Int
+        var nomb=""; var apel=""; var tele=""; var edad=0; var foto:String; var cod:Int ; var serv:Int
         //leer cajas
         cod=txtTrabCodigo.text.toString().toInt()
         nomb=txtTrabNombre.text.toString()
@@ -100,9 +102,10 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
 
 
 
+
          foto = imageUri?.toString() ?: bundle?.foto ?: ""
 
-        val trab = Trabajador(cod, nomb, apel, tele, edad, foto)
+        val trab = Trabajador(cod, nomb, apel, tele, edad,foto)
 
         val estado = ArregloTrabajador().actualizar(trab)
 
@@ -151,6 +154,7 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
             txtTrabApellido.setText(it.apellido)
             txtTrabTelefono.setText(it.telefono)
             txtTrabEdad.setText(it.edad.toString())
+
 
             val fotoUrl = it.foto
 

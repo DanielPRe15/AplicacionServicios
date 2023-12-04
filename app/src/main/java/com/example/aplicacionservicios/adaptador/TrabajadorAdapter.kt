@@ -33,6 +33,8 @@ class TrabajadorAdapter(var data:ArrayList<Trabajador>): RecyclerView.Adapter<Vi
         holder.tvTrabTelefono.text = data[position].telefono
         holder.tvTrabEdad.text = data[position].edad.toString()
 
+
+
         val trabajador = data[position]
         val contexto: Context = holder.itemView.context
         val rutaImagen = trabajador.foto

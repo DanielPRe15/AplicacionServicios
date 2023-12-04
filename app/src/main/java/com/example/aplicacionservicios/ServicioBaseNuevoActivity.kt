@@ -89,7 +89,7 @@ class ServicioBaseNuevoActivity: AppCompatActivity(), AdapterView.OnItemClickLis
         }
     }
     fun grabar(){
-        var nomb="";var foto="";var trab:Int
+        var nomb="";var foto="";
 
         nomb=txtServBaseNombreNew.text.toString()
 
@@ -99,7 +99,7 @@ class ServicioBaseNuevoActivity: AppCompatActivity(), AdapterView.OnItemClickLis
         if (imageUri != null) {
             val foto = imageUri.toString() // Obtener la ruta de la imagen
 
-            val serv = Servicio(0, nomb, posTrabajadores, foto)
+            val serv = Servicio(0, nomb,  foto)
             val estado = ArregloServicio().adicionar(serv)
 
             if (estado > 0) {

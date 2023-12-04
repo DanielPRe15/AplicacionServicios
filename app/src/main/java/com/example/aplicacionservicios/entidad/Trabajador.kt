@@ -8,6 +8,7 @@ class Trabajador (var codigo:Int,
                   var telefono:String,
                   var edad:Int,
                   var foto:String,
+
                   ): Serializable
      {
 

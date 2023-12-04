@@ -19,10 +19,12 @@ class ArregloTrabajador {
                 rs.getString(3),
                 rs.getInt(4),
                 rs.getString(5))
+
             data.add(bean)
         }
         return data
     }
+
 
     fun listadoTrabajador(): ArrayList<String>{
         var data = ArrayList<String>()

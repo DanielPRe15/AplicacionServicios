@@ -44,15 +44,14 @@ class ServicioBaseEditarActivity: AppCompatActivity(), AdapterView.OnItemClickLi
     fun actualizar(){
         //variables
         var nomb="";var foto="";
-        var cod:Int;var trab:Int
+        var cod:Int;
 
         //leer cajas
         cod=txtServBaseCodigo.text.toString().toInt()
         nomb=txtServBaseNombre.text.toString()
-        trab=txtServBaseCodigoTrabajador.text.toString().toInt()
         foto=txtServBaseFoto.text.toString()
 
-        var serv=Servicio(cod,nomb,trab,foto)
+        var serv=Servicio(cod,nomb,foto)
         //invocar al método actualizar
         var estado=ArregloServicio().actualizar(serv)
         //validar estado
@@ -94,7 +93,6 @@ class ServicioBaseEditarActivity: AppCompatActivity(), AdapterView.OnItemClickLi
         //mostrar en los controles el valor de bundle
         txtServBaseCodigo.setText(bundle.codigo.toString())
         txtServBaseNombre.setText(bundle.nombre.toString())
-        txtServBaseCodigoTrabajador.setText(bundle.codigoTrabajador.toString())
         txtServBaseFoto.setText(bundle.foto)
     }
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
