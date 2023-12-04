@@ -23,9 +23,21 @@ class ArregloServicio {
             var bean = Servicio(
                 rs.getInt(0),
                 rs.getString(1),
-                rs.getInt(2),
-                rs.getString(3))
+                rs.getString(2))
             //enviar objeto al arreglo data
+            data.add(bean)
+        }
+        return data
+    }
+
+    fun listadoServicio(): ArrayList<String>{
+        var data = ArrayList<String>()
+        var cn: SQLiteDatabase = appConfig.BD.readableDatabase
+        var SQL = "select *from tb_servicio"
+        var rs = cn.rawQuery(SQL, null)
+        while (rs.moveToNext()) {
+            var bean = rs.getString(1)
+
             data.add(bean)
         }
         return data
@@ -61,7 +73,6 @@ class ArregloServicio {
         //claves
         row.put("nom",bean.nombre)
         row.put("foto",bean.foto)
-        row.put("cod_trabajador",bean.codigoTrabajador)
         //invocar al método insert
         salida=cn.insert("tb_servicio","cod_servicio",row).toInt()
         return salida
@@ -76,7 +87,6 @@ class ArregloServicio {
         row.put("cod_servicio",bean.codigo)
         row.put("nom",bean.nombre)
         row.put("foto",bean.foto)
-        row.put("cod_trabajador",bean.codigoTrabajador)
         //invocar al método update
         salida=cn.update("tb_servicio",row,"cod_servicio=?",
             arrayOf(bean.codigo.toString()))

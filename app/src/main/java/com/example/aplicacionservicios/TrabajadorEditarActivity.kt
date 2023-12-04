@@ -211,7 +211,7 @@ class TrabajadorEditarActivity: AppCompatActivity(), AdapterView.OnItemClickList
         val arregloServicio = ArregloServicio()
         val listaNombresServicio = arregloServicio.listadoServicio()
 
-        return if (listaNombresServicio.size > codigoServicio - 1) {
+        return if (codigoServicio > 0 && listaNombresServicio.size > codigoServicio) {
             listaNombresServicio[codigoServicio - 1]
         } else {
             "Servicio no encontrado" // Cambiar por el mensaje que desees en caso de no encontrar el servicio

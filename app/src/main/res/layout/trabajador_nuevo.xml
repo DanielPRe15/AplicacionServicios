@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/fondoayudafast">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="409dp"
@@ -16,8 +15,11 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField1"
-            android:layout_width="match_parent"
+            android:layout_width="312dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="7dp"
             android:hint="@string/labelNombre">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -27,8 +29,10 @@
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField2"
-            android:layout_width="match_parent"
+            android:layout_width="312dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginBottom="7dp"
             android:hint="@string/labelApellido">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -38,8 +42,10 @@
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField3"
-            android:layout_width="match_parent"
+            android:layout_width="312dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginBottom="7dp"
             android:hint="@string/labelTelefono">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -52,17 +58,18 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/menu"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
+            android:layout_width="312dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginBottom="7dp"
 
             android:hint="[Selecciona Servicio]">
 
             <AutoCompleteTextView
                 android:id="@+id/atvServicio"
-                android:layout_width="339dp"
+                android:layout_width="312dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+
                 android:inputType="none"
                 android:textSize="16sp" />
 
@@ -73,8 +80,9 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField4"
-            android:layout_width="match_parent"
+            android:layout_width="312dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
             android:hint="@string/labelEdad">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -97,8 +105,10 @@
 
         <Button
             android:id="@+id/btnSeleccionarImagen"
-            android:layout_width="match_parent"
+            android:layout_width="338dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:text="AGREGAR IMAGEN" />
 
 

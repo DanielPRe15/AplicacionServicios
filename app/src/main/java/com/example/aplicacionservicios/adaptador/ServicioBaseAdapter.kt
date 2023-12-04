@@ -9,7 +9,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.aplicacionservicios.R
-import com.example.aplicacionservicios.ServicioBaseEditarActivity
 import com.example.aplicacionservicios.entidad.Servicio
 import com.example.aplicacionservicios.utils.appConfig
 
@@ -52,11 +51,5 @@ class ServicioBaseAdapter(var data:ArrayList<Servicio>): RecyclerView.Adapter<Vi
                 .into(holder.imgServBaseFoto)
         }
 
-        //contexto de ViewDocente
-        holder.itemView.setOnClickListener{
-            var intent = Intent(appConfig.CONTEXT, ServicioBaseEditarActivity::class.java)
-            intent.putExtra("servicio",data[position])
-            ContextCompat.startActivity(appConfig.CONTEXT, intent, null)
-        }
     }
 }
